@@ -1,16 +1,21 @@
 class ProjectsController < ApplicationController
+  def index
+    @projects = Project.all.order('created_at DESC')
+  end
+
   def new
     @project = Project.new
   end
 
   def create
     @project = Project.new(project_params)
+    #binding.pry
     if @project.save 
       flash[:success] = 'プロジェクトを登録しました'
       redirect_to projects_url
     else
       flash.now[:danger] = 'プロジェクトの登録に失敗しました'
-      render 'projects/index'
+      render :new
     end
   end
 
@@ -27,7 +32,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
 
-    if @project.update(message_params)
+    if @project.update(project_params)
       flash[:success] = 'プロジェクトは正常に更新されました'
       redirect_to projects_url
     else
@@ -40,12 +45,9 @@ class ProjectsController < ApplicationController
     @projects = Project.find(params[:id])
   end
 
-  def index
-    @projects = Project.all.order('created_at DESC')
-  end
 
   private
   def project_params
-    params.require(:project).permit(:name)
+    params.require(:project).permit(:name, :boss_id)
   end
 end

@@ -1,2 +1,8 @@
-<h1>Projects#edit</h1>
-<p>Find me in app/views/projects/edit.html.erb</p>
+<%= form_with(model: @project, local: true) do |f| %>
+  <%= f.label :name, 'プロジェクト名' %>
+  <%= f.text_field :name %>
+
+  <%= f.collection_select :boss_id, User.all, :id, :name, include_blank: '選択して下さい' %>
+
+  <%= f.submit '編集' %>
+<% end %>
