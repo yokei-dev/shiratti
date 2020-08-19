@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project = Project.find(params[:id])
     @project.destroy
     flash[:success] = 'プロジェクトを削除しました'
     redirect_to projects_url

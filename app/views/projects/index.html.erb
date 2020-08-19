@@ -1,4 +1,7 @@
 <% @projects.each do |p| %>
-  <%= p.name %>
-  <%#= p.boss.name%>
+  <p><%= p.name %></p>
+  <p><%= p.boss.name%></p>
+
+  <%= link_to '編集', edit_project_path(p) %>
+
 <% end %>
