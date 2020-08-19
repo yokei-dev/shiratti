@@ -1,0 +1,8 @@
+<%= form_with(model: @project, local: true) do |f| %>
+  <%= f.label :name, 'プロジェクト名' %>
+  <%= f.text_field :name %>
+
+  <%= f.collection_select :id, User.all, :boss_id, :boss  :name, include_blank: '選択して下さい' %>
+
+  <%= f.submit '登録' %>
+<% end %>
