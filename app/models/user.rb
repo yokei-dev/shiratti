@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :user_projects
   has_many :joinings, through: :user_projects, source: :project
 
+  has_many :tasks
+
 def join(project)
   self.user_projects.find_or_create_by(project_id: project.id)
 end
@@ -21,5 +23,6 @@ end
 def joining?(project)
   self.joinings.include?(project)
 end
+
 
 end

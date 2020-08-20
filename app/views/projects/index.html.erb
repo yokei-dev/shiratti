@@ -2,6 +2,8 @@
 
 <% @projects.each do |p| %>
   <p><%= p.name %></p>
+<<<<<<< HEAD
+=======
   <% if current_user.joining?(p) %>
     <%= form_with(model: current_user.user_projects.find_by(project_id: p.id), local: true, method: :delete) do |f| %>
       <%= hidden_field_tag :project_id, p.id %>
@@ -13,6 +15,7 @@
       <%= f.submit '未参加' %>
     <% end %>
   <% end %>
+>>>>>>> 8629a3d2ffebe9c132f7a5a4ad365a2c1c093e13
 
   <%= link_to '編集', edit_project_path(p) %>
 

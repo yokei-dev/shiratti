@@ -3,6 +3,11 @@
 <ul>
   <% @tasks.each do |task| %>
     <li><%= task.content %></li>
-    <div>〆切：<%= task.deadline %></div>   
+    <div>〆切：<%= task.deadline %></div>
+    <% if task.user.present? %> 
+    	<div>担当者：<%= task.user.name %></div>
+    <% else %>
+    	<div>担当者なし</div>
+    <% end %>
   <% end %>
 </ul>
