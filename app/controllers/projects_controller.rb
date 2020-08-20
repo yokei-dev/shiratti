@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    #binding.pry
     @project = Project.new
   end
 

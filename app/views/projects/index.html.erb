@@ -1,6 +1,18 @@
+<h2> <%= 'プロジェクト一覧' %> </h2>
+
 <% @projects.each do |p| %>
   <p><%= p.name %></p>
-  <p><%= p.boss.name%></p>
+  <% if current_user.joining?(p) %>
+    <%= form_with(model: current_user.user_projects.find_by(project_id: p.id), local: true, method: :delete) do |f| %>
+      <%= hidden_field_tag :project_id, p.id %>
+      <%= f.submit '参加済' %>
+    <% end %>
+  <% else %>
+    <%= form_with(model: current_user.user_projects.build, local: true) do |f| %>
+      <%= hidden_field_tag :project_id, p.id %>
+      <%= f.submit '未参加' %>
+    <% end %>
+  <% end %>
 
   <%= link_to '編集', edit_project_path(p) %>
 
