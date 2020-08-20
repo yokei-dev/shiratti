@@ -1,0 +1,10 @@
+<%= form_with(model: @project, local: true) do |f| %>
+  <%= f.label :name, 'プロジェクト名' %>
+  <%= f.text_field :name %>
+
+  <%= f.collection_select :boss_id, User.all, :id, :name, include_blank: '選択して下さい' %>
+
+  <%= f.submit '更新' %>
+  <%= link_to '削除', @project, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+
+<% end %>

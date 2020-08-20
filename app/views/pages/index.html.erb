@@ -1,6 +1,2 @@
 <p>テスト</p>
 
-<% if user_signed_in? %>
-    <%= link_to "サインアウト", destroy_user_session_path, method: :delete %>
-    <%= link_to "編集", edit_user_registration_path %>
-<% end %>
