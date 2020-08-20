@@ -12,6 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2020_08_20_064344) do
 
+  create_table "daily_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "task_id", null: false
+    t.date "add_date", null: false
+    t.integer "condition"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["task_id"], name: "index_daily_tasks_on_task_id"
+    t.index ["user_id"], name: "index_daily_tasks_on_user_id"
+  end
+
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "boss_id"
@@ -54,6 +65,8 @@ ActiveRecord::Schema.define(version: 2020_08_20_064344) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "daily_tasks", "tasks"
+  add_foreign_key "daily_tasks", "users"
   add_foreign_key "projects", "users", column: "boss_id"
   add_foreign_key "tasks", "projects"
   add_foreign_key "tasks", "users"

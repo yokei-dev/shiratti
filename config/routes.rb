@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'daily_tasks/create'
   root 'pages#index'
   
   devise_scope :user do
@@ -19,6 +20,9 @@ Rails.application.routes.draw do
   resources :tasks, only: [:show, :update, :edit, :destroy]
   resources :projects, only: [:show, :update, :edit, :destroy]
   resources :user_projects, only: [:create, :destroy]
+  resources :daily_tasks, only: [:create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  get 'users/:id/doing' => 'users#doing'
 
 end
