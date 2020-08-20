@@ -3,7 +3,7 @@
     <div class="form-wrap">
       <div class="form-group text-center">
       </div>
-      <%= form_with model: @task do |f| %>
+      <%= form_with(model: @task, local: true) do |f| %>
         <div class="form-group">
           <%= f.label :content , 'タスク'%>
           <%= f.text_field :content %>
