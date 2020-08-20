@@ -39,8 +39,8 @@ class TasksController < ApplicationController
     # if params.status == 0	
       if @task.update(task_params)
       flash[:success] = 'タスクは正常に更新されました'
-      redirect_to root_path
-      else
+      redirect_back(fallback_location: root_path)
+    else
       flash.now[:danger] = 'タスクは更新されませんでした'
       render :edit
       end
