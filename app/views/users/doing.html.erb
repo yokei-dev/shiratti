@@ -6,14 +6,14 @@
   </ul>
 </div>
 
-<div>
   <% @daily_tasks.each do |daily_task| %>
     <%= daily_task.task.content %>
 
-    <%= form_with daily_task.task, url: update_task_params do |f| %>
+    <%= form_with daily_task.task, url: update_task_status_params do |f| %>
       <%= f.check_box(:status,checked_value = 0,unchecked_value = 1 ) %>
       <%= fields_for daily_task, update_daily_task_params do |c| %>
         <%= c.number_field :condition,min:1,max:3,step:1 %>
-    <%= f.submit %>
+      <%= f.submit %>
+    <% end %>
   <% end %>
-</div>   
+  <% end %>

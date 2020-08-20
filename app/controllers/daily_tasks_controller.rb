@@ -15,6 +15,6 @@ class DailyTasksController < ApplicationController
   private 
   
   def daily_task_params
-    params.require(:DailyTask).permit(:user_id,:task_id,:add_date,:condition)
+    params.require(:daily_task).permit(:user_id,:task_id,:add_date,:condition)
   end
 end

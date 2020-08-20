@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get 'daily_tasks/create'
   root 'pages#index'
   
-  resources :projects, only: [:show, :update, :edit, :destroy]
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  resources :projects, only: [:show, :update, :edit, :destroy]
   resources :user_projects, only: [:create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
