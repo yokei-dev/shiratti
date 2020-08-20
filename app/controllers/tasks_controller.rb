@@ -13,6 +13,7 @@ class TasksController < ApplicationController
 	end
 
 	def create
+		#binding.pry
 		@task = Task.new(task_params)
 		if @task.save
 			flash[:success] = 'タスクを投稿しました。'
@@ -24,10 +25,11 @@ class TasksController < ApplicationController
 	end
 
 	def destroy
+		#binding.pry
 		@task = Task.find(params[:id])
 		@task.destroy
 		flash[:success] = 'タスクを削除しました。'
-    	redirect_back(fallback_location: root_path)
+    redirect_to root_url
 	end
 
 	def edit
