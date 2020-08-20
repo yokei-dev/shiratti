@@ -54,8 +54,12 @@ class TasksController < ApplicationController
   end
 
 	private
-		def task_params
-			params.require(:task).permit(:content, :deadline, :project_id, :user_id)
+    def task_params
+      unless params[:task][:project_id].present?
+        params.require(:task).permit(:content, :deadline, :project_id).merge(user_id: current_user.id)
+      else
+        params.require(:task).permit(:content, :deadline, :project_id, :user_id)
+      end
 		end
 
 		# def task_status_params
