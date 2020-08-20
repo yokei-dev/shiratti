@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'user_projects/create'
-  get 'user_projects/destroy'
   root 'pages#index'
   
   resources :projects, only: [:show, :update, :edit, :destroy]
@@ -20,4 +18,7 @@ Rails.application.routes.draw do
   end
   resources :user_projects, only: [:create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+	resources :tasks
+
 end
