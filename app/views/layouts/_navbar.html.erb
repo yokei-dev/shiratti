@@ -2,6 +2,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <%= link_to "ホームページ", root_path %>
+
+    <%= link_to "プロジェクト作成", new_project_path(id:current_user.id) %>
+    <%= link_to "全プロジェクト一覧", projects_path(id:current_user.id) %>
+    <%= link_to "タスク作成", new_task_path(id:current_user.id) %>
+    <%= link_to "マイタスク", tasks_path(id:current_user.id) %>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
