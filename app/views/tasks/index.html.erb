@@ -2,6 +2,7 @@
 
 <ul>
   <% @tasks.each do |task| %>
-    <li><%= task.content %>:<%= task.deadline %></li>
+    <li><%= task.content %></li>
+    <div>〆切：<%= task.deadline %></div>   
   <% end %>
 </ul>

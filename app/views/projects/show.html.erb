@@ -1,2 +1,9 @@
-<%= 'タスクができないと作れない' %>
-<%= 'プロジェクトごとのタスク一覧ページ' %>
+<h1>タスク一覧</h1>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li><%= task.content %>
+    	<div>〆切: <%= task.deadline %></div>
+    </li>
+  <% end %>
+</ul>
