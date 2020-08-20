@@ -8,7 +8,6 @@ class User < ApplicationRecord
   
   has_many :user_projects
   has_many :joinings, through: :user_projects, source: :project
-
   has_many :tasks
 
 def join(project)
