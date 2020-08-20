@@ -23,4 +23,5 @@ def joining?(project)
   self.joinings.include?(project)
 end
 
+
 end

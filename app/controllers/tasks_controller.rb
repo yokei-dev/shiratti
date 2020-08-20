@@ -2,7 +2,7 @@ class TasksController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@tasks = current_user.tasks.order('created_at DESC')
+		@tasks = User.find_by(id: params[:id]).tasks.order('created_at DESC')
 	end
 
 	def show
@@ -48,6 +48,6 @@ class TasksController < ApplicationController
 
 	private
 		def task_params
-			params.require(:task).permit(:content, :deadline, :project_id)
+			params.require(:task).permit(:content, :deadline, :project_id, :user_id)
 		end
 end
