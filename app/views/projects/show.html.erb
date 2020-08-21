@@ -12,6 +12,7 @@
 					<div class="form-group">
 							<%= f.label :user_id , '担当者変更'%>
 							<%= f.hidden_field :status, :value => 0 %>
+							<%= f.hidden_field :project_id, :value => task.project_id %>
 							<%= f.collection_select :user_id, User.all, :id, :name, include_blank: '担当なし' %>
 						</div>
 						<div class="actions">
