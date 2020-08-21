@@ -8,7 +8,7 @@
       <%= link_to "全プロジェクト一覧", projects_path(id:current_user.id) %>
       <%= link_to "マイプロジェクト", joinings_user_path(id:current_user.id) %>
       <%= link_to "タスク作成", new_task_path(id:current_user.id) %>
-      <%= link_to "マイタスク", tasks_path(id:current_user.id) %>
+      <%= link_to "マイタスク", "/users/#{current_user.id}/todo" %>
       <%= link_to "マイページ", users_path(id:current_user.id) %>
       <li class="nav-item">
             <a class="nav-link" href="/users/sign_out">サインアウト</a>
