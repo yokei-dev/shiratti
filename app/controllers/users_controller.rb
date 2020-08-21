@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  
+  def joinings
+    @user = User.find_by(id: params[:id])
+    @projects = @user.joinings
+  end
 
   def todo
     @tasks = User.find_by(id: params[:id]).tasks.order('created_at DESC')
