@@ -36,7 +36,6 @@ class TasksController < ApplicationController
 
 	def update
     @task = Task.find(params[:id])
-    # binding.pry
     if params[:task][:status] == "0"	
       if @task.update(task_params)
         flash[:success] = 'タスクは正常に更新されました'
@@ -58,13 +57,9 @@ class TasksController < ApplicationController
 	private
   def task_params
     unless params[:task][:project_id].present?
-      if params[:task][:user_id].present?
-        params.require(:task).permit(:content, :deadline, :project_id, :status).merge(user_id: current_user.id)
-      else
-        params.require(:task).permit(:content, :deadline, :project_id, :status)
-      end
+      params.require(:task).permit(:content, :deadline, :project_id, :status).merge(user_id: current_user.id)
     else
-      params.require(:task).permit(:content, :deadline, :project_id, :user_id, :status)
+        params.require(:task).permit(:content, :deadline, :project_id, :user_id, :status)
     end
   end
 
