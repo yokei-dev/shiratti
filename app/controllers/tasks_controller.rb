@@ -36,7 +36,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     # binding.pry
     if params[:task][:status] == "0"	
-      if params[:daily_task][:condition]
+      if params[:daily_task]
         @daily_task = DailyTask.find(params[:daily_task_id])
         if @daily_task.update(daily_task_update_params)
           redirect_to root_path
@@ -65,9 +65,9 @@ class TasksController < ApplicationController
 	private
   def task_params
     unless params[:task][:project_id].present?
-      params.require(:task).permit(:content, :deadline, :project_id, :status).merge(user_id: current_user.id)
+      params.require(:task).permit(:content, :deadline, :project_id, :status).merge(user_id: current_user.id)#プロジェクトidがない場合
     else
-        params.require(:task).permit(:content, :deadline, :project_id, :user_id, :status)
+        params.require(:task).permit(:content, :deadline, :project_id, :user_id, :status)#プロジェクトidがある場合（ユーザーへの割り振りはこちら）
     end
   end
 
