@@ -3,10 +3,24 @@
   <div class="container">
     <%= link_to "ホームページ", root_path %>
 
-    <%= link_to "プロジェクト作成", new_project_path(id:current_user.id) %>
-    <%= link_to "全プロジェクト一覧", projects_path(id:current_user.id) %>
-    <%= link_to "タスク作成", new_task_path(id:current_user.id) %>
-    <%= link_to "マイタスク", tasks_path(id:current_user.id) %>
+    <% if user_signed_in? %>
+      <%= link_to "プロジェクト作成", new_project_path(id:current_user.id) %>
+      <%= link_to "全プロジェクト一覧", projects_path(id:current_user.id) %>
+      <%= link_to "マイプロジェクト", joinings_user_path(id:current_user.id) %>
+      <%= link_to "タスク作成", new_task_path(id:current_user.id) %>
+      <%= link_to "マイタスク", tasks_path(id:current_user.id) %>
+      <%= link_to "マイページ", users_path(id:current_user.id) %>
+      <li class="nav-item">
+            <a class="nav-link" href="/users/sign_out">サインアウト</a>
+          </li>
+    <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/sign_in">サインイン</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/sign_up">サインアップ</a>
+          </li>
+    <% end %>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

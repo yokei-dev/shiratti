@@ -64,3 +64,4 @@ gem 'devise-i18n-views'
 
 gem 'slack-notifier'
 
+gem 'gemoji'
