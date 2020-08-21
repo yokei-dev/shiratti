@@ -9,26 +9,19 @@
   <% @daily_tasks.each do |daily_task| %>
     <% unless daily_task.condition %>
       <%= daily_task.task.content %>
-      <%= form_with(model: daily_task.task) do |f| %>
-        <%= f.check_box(:status, {}, checked_value = 2, unchecked_value = "1" ) %>
-        <%= fields_for daily_task do |c| %>
-          <%= c.label :condition, "○", value: 1 %>
-          <%= c.radio_button :condition, 1 %>
-          <%= c.label :condition, "▲", value: 1 %>
-          <%= c.radio_button :condition, 2 %>
-          <%= c.label :condition, "×", value: 1 %>
-          <%= c.radio_button :condition, 3 %>
-          <% if false %>
-          <%= c.label :condition, "○" %>
-          <%= c.check_box(:condition, {}, "1")%>
-          <%= c.label :condition, "▲" %>
-          <%= c.check_box(:condition, {}, "2")%>
-          <%= c.label :condition, "×" %>
-          <%= c.check_box(:condition, {}, "3")%>
-            <%= c.number_field :condition,min:1,max:3,step:1 %>
+      <% if current_user %>
+        <%= form_with(model: daily_task.task) do |f| %>
+          <%= f.check_box(:status, {}, checked_value = 1, unchecked_value = 0 ) %>
+          <%= fields_for daily_task do |c| %>
+            <%= c.label :condition, "○", value: 1 %>
+            <%= c.radio_button :condition, 1 %>
+            <%= c.label :condition, "▲", value: 2 %>
+            <%= c.radio_button :condition, 2 %>
+            <%= c.label :condition, "×", value: 3 %>
+            <%= c.radio_button :condition, 3 %>
+            <%= hidden_field_tag :daily_task_id,daily_task.id %>
+          <%= f.submit %>
           <% end %>
-          <%= hidden_field_tag :daily_task_id,daily_task.id %>
-        <%= f.submit %>
         <% end %>
       <% end %>
     <% end %>
