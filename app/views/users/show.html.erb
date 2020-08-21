@@ -1,72 +1,86 @@
 <h2>タスク結果</h2>
 
 <div>
-  <p><%= Date.today if @daily_tasks_0 %></p>
+  <p><%= Date.today if @daily_tasks_0.present? %></p>
 
   <% @daily_tasks_0.each do |t| %>
-    <%= t.task.content %>
-    <%= '○' if t.condition = 1 %>
-    <%= '△' if t.condition = 2 %>
-    <%= '×' if t.condition = 3 %>
+    <div>
+      <%= t.task.content %>
+      <%= '○' if t.condition == 1 %>
+      <%= '△' if t.condition == 2 %>
+      <%= '×' if t.condition == 3 %>
+    </div>
   <% end %>
 </div>
 <div>
   <p><%= Date.today-1 if @daily_tasks_1 %></p>
 
   <% @daily_tasks_1.each do |t| %>
-    <%= t.task.content %>
-    <%= '○' if t.condition = 1 %>
-    <%= '△' if t.condition = 2 %>
-    <%= '×' if t.condition = 3 %>
+    <div>
+      <%= t.task.content %>
+      <%= '○' if t.condition == 1 %>
+      <%= '△' if t.condition == 2 %>
+      <%= '×' if t.condition == 3 %>
+    </div>
   <% end %>
 </div>
 <div>
   <p><%= Date.today-2 if @daily_tasks_2 %></p>
 
   <% @daily_tasks_2.each do |t| %>
-    <%= t.task.content %>
-    <%= '○' if t.condition = 1 %>
-    <%= '△' if t.condition = 2 %>
-    <%= '×' if t.condition = 3 %>
+    <div>
+      <%= t.task.content %>
+      <%= '○' if t.condition == 1 %>
+      <%= '△' if t.condition == 2 %>
+      <%= '×' if t.condition == 3 %>
+    </div>
   <% end %>
 </div>
 <div>
   <p><%= Date.today-3 if @daily_tasks_3 %></p>
 
   <% @daily_tasks_3.each do |t| %>
-    <%= t.task.content %>
-    <%= '○' if t.condition = 1 %>
-    <%= '△' if t.condition = 2 %>
-    <%= '×' if t.condition = 3 %>
+    <div>
+      <%= t.task.content %>
+      <%= '○' if t.condition == 1 %>
+      <%= '△' if t.condition == 2 %>
+      <%= '×' if t.condition == 3 %>
+    </div>
   <% end %>
 </div>
 <div>
   <p><%= Date.today-4 if @daily_tasks_4 %></p>
 
   <% @daily_tasks_4.each do |t| %>
-    <%= t.task.content %>
-    <%= '○' if t.condition = 1 %>
-    <%= '△' if t.condition = 2 %>
-    <%= '×' if t.condition = 3 %>
+    <div>
+      <%= t.task.content %>
+      <%= '○' if t.condition == 1 %>
+      <%= '△' if t.condition == 2 %>
+      <%= '×' if t.condition == 3 %>
+    </div>
   <% end %>
 </div>
 <div>
   <p><%= Date.today-5 if @daily_tasks_5 %></p>
 
   <% @daily_tasks_5.each do |t| %>
-    <%= t.task.content %>
-    <%= '○' if t.condition = 1 %>
-    <%= '△' if t.condition = 2 %>
-    <%= '×' if t.condition = 3 %>
+    <div>
+      <%= t.task.content %>
+      <%= '○' if t.condition == 1 %>
+      <%= '△' if t.condition == 2 %>
+      <%= '×' if t.condition == 3 %>
+    </div>
   <% end %>
 </div>
 <div>
   <p><%= Date.today-6 if @daily_tasks_6 %></p>
 
   <% @daily_tasks_6.each do |t| %>
-    <%= t.task.content %>
-    <%= '○' if t.condition = 1 %>
-    <%= '△' if t.condition = 2 %>
-    <%= '×' if t.condition = 3 %>
+    <div>
+      <%= t.task.content %>
+      <%= '○' if t.condition == 1 %>
+      <%= '△' if t.condition == 2 %>
+      <%= '×' if t.condition == 3 %>
+    </div>
   <% end %>
 </div>
