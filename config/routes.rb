@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     end
   end
   resources :tasks, only: [:show, :update, :edit, :destroy]
-  resources :projects, only: [:show, :update, :edit, :destroy]
+  resources :projects, only: [:show, :update, :edit, :destroy] do
+    member do
+      get :users
+    end    
+  end
   resources :user_projects, only: [:create, :destroy]
   resources :daily_tasks, only: [:create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
