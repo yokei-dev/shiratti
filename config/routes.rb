@@ -9,12 +9,9 @@ Rails.application.routes.draw do
   end
   resources :users do 
     member do
+      get :joinings
       resources :tasks, only: [:index, :new, :create]
-      resources :projects, only: [:index, :new, :create] do
-        member do 
-          get :joinings
-        end
-      end
+      resources :projects, only: [:index, :new, :create] 
     end
   end
   resources :tasks, only: [:show, :update, :edit, :destroy]
