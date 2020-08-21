@@ -48,6 +48,11 @@ class ProjectsController < ApplicationController
     @tasks = @project.tasks
   end
 
+  def users
+    @project = Project.find(params[:id])
+    @users = @project.members
+  end
+
 
   private
   def project_params
