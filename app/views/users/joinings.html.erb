@@ -1,0 +1,10 @@
+<h2> <%= '所属しているプロジェクト' %> </h2>
+
+<% @projects.each do |p| %>
+  <%= p.name %>
+  <%= link_to 'タスク', project_path(p) %>
+  <%= link_to 'メンバー', root_path %>
+  
+  <%= link_to '編集', edit_project_path(p) %>
+
+<% end %>
