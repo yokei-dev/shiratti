@@ -1,9 +1,7 @@
 class TasksController < ApplicationController
 	before_action :authenticate_user!
 
-	def index
-		@tasks = User.find_by(id: params[:id]).tasks.order('created_at DESC')
-	end
+
 
 	def show
 	end
@@ -37,34 +35,41 @@ class TasksController < ApplicationController
 	end
 
 	def update
-		@task = Task.find(params[:id])
-    # if params.status == 0	
+    @task = Task.find(params[:id])
+    # binding.pry
+    if params[:task][:status] == 1	
       if @task.update(task_params)
-      flash[:success] = 'タスクは正常に更新されました'
-      redirect_back(fallback_location: root_path)
-    else
-      flash.now[:danger] = 'タスクは更新されませんでした'
-      render :edit
+        flash[:success] = 'タスクは正常に更新されました'
+        redirect_back(fallback_location: root_path)
+      else
+        flash.now[:danger] = 'タスクは更新されませんでした'
+        render :edit
       end
-    # else
-    #   if @task.update(task_status_params)
-    #     redirect_to root_path
-    #   else
-    #     render 'users/doing'
-    #   end
-    # end
+    else
+      @daily_task = DailyTask.find(params[:daily_task_id])
+      if @task.update(task_update_params) && @daily_task.update(daily_task_update_params)
+        redirect_to root_path
+      else
+        render 'users/doing'
+      end
+    end
   end
 
 	private
-    def task_params
-      unless params[:task][:project_id].present?
-        params.require(:task).permit(:content, :deadline, :project_id).merge(user_id: current_user.id)
-      else
-        params.require(:task).permit(:content, :deadline, :project_id, :user_id)
-      end
-		end
+  def task_params
+    unless params[:task][:project_id].present?
+      params.require(:task).permit(:content, :deadline, :project_id).merge(user_id: current_user.id)
+    else
+      params.require(:task).permit(:content, :deadline, :project_id, :user_id)
+    end
+  end
 
-		# def task_status_params
-		#   params.require(:task).permit(:status)
-		# end
+	def task_update_params
+	  params.require(:task).permit(:status)
+  end
+
+  def daily_task_update_params
+    params.require(:daily_task).permit(:condition)
+  end
+
 end
