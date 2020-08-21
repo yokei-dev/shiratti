@@ -4,10 +4,9 @@
   <% @tasks.each do |task| %>
     <li><%= task.content %></li>
     <div>〆切：<%= task.deadline %></div>
-    <% if task.user.present? %> 
-    	<div>担当者：<%= task.user.name %></div>
-    <% else %>
-    	<div>担当者なし</div>
+    <%= form_with(model: task.daily_tasks.build, local: true)do |f| %>
+      <%= f.hidden_field :task_id, :value => task.id %>
+      <%= f.submit 'Doing', class: 'btn btn-primary btn-block' %>
     <% end %>
     <>
   <% end %>

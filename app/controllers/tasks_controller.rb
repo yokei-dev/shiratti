@@ -38,18 +38,33 @@ class TasksController < ApplicationController
 
 	def update
 		@task = Task.find(params[:id])
-
-    if @task.update(task_params)
+    # if params.status == 0	
+      if @task.update(task_params)
       flash[:success] = 'タスクは正常に更新されました'
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
     else
       flash.now[:danger] = 'タスクは更新されませんでした'
       render :edit
-    end
-	end
+      end
+    # else
+    #   if @task.update(task_status_params)
+    #     redirect_to root_path
+    #   else
+    #     render 'users/doing'
+    #   end
+    # end
+  end
 
 	private
-		def task_params
-			params.require(:task).permit(:content, :deadline, :project_id, :user_id)
+    def task_params
+      unless params[:task][:project_id].present?
+        params.require(:task).permit(:content, :deadline, :project_id).merge(user_id: current_user.id)
+      else
+        params.require(:task).permit(:content, :deadline, :project_id, :user_id)
+      end
 		end
+
+		# def task_status_params
+		#   params.require(:task).permit(:status)
+		# end
 end
