@@ -1,0 +1,18 @@
+<div class="col-sm-8">
+  <ul class="nav nav-tabs nav-justified mb-3">
+    <li class="nav-item"><%= link_to "ToDo", "/users/#{current_user.id}/todo", class: 'nav-link active'%></li>
+    <li class="nav-item"><%= link_to "Doing", "/users/#{current_user.id}/doing", class: 'nav-link'%></li>
+    <li class="nav-item"><%= link_to "Done", "/users/#{current_user.id}/done", class: 'nav-link'%></li>
+  </ul>
+</div>
+<ul>
+  <% @tasks.each do |task| %>
+    <li><%= task.content %></li>
+    <div>〆切：<%= task.deadline %></div>
+    <%= form_with(model: task.daily_tasks.build, local: true)do |f| %>
+      <%= f.hidden_field :task_id, :value => task.id %>
+      <%= f.submit 'Doing', class: 'btn btn-primary btn-block' %>
+    <% end %>
+    <>
+  <% end %>
+</ul>

@@ -18,5 +18,4 @@ class UsersController < ApplicationController
     @daily_tasks_6 = current_user.daily_tasks.where(add_date: Date.today-6)
   end
 
-
 end
