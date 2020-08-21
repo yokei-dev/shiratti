@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   resources :users do 
     member do
-      resources :tasks, only: [:index, :new, :create]
+      resources :tasks, only: [:new, :create]
       resources :projects, only: [:index, :new, :create] do
         member do 
           get :joinings
@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   resources :user_projects, only: [:create, :destroy]
   resources :daily_tasks, only: [:create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
+  get 'users/:id/todo' => 'users#todo'
   get 'users/:id/doing' => 'users#doing'
+  get 'users/:id/done' => 'users#done'
 
 end

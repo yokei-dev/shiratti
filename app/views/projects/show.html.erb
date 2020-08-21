@@ -11,6 +11,7 @@
 					<div>〆切：<%= task.deadline %></div>
 					<div class="form-group">
 							<%= f.label :user_id , '担当者変更'%>
+							<%= f.hidden_field :status, :value => 1 %>
 							<%= f.collection_select :user_id, User.all, :id, :name, include_blank: '担当なし' %>
 						</div>
 						<div class="actions">
@@ -29,6 +30,7 @@
 					<div>〆切: <%= task.deadline %></div>
 					<div class="form-group">
 						<%= f.label :user_id , '担当者'%>
+						<%= f.hidden_field :status, :value => 1 %>
 						<%= f.collection_select :user_id, User.all, :id, :name, include_blank: '選択して下さい' %>
 					</div>
 					<div class="actions">
