@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  motivation: 1.5
+  user: one
+  add_date: 2020-08-22
+
+two:
+  motivation: 1.5
+  user: two
+  add_date: 2020-08-22
