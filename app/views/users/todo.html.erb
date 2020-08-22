@@ -1,24 +1,29 @@
-<div class="col-sm-8">
-  <ul class="nav nav-tabs nav-justified mb-3">
-    <li class="nav-item"><%= link_to "ToDo", "/users/#{current_user.id}/todo", class: 'nav-link active'%></li>
-    <li class="nav-item"><%= link_to "Doing", "/users/#{current_user.id}/doing", class: 'nav-link'%></li>
-    <li class="nav-item"><%= link_to "Done", "/users/#{current_user.id}/done", class: 'nav-link'%></li>
+<div class= 'container'>
+  <div class="mt-3">
+    <ul class="nav nav-tabs nav-justified mb-3">
+      <li class="nav-item"><%= link_to "ToDo", "/users/#{current_user.id}/todo", class: 'nav-link active'%></li>
+      <li class="nav-item"><%= link_to "Doing", "/users/#{current_user.id}/doing", class: 'nav-link btn-secondary'%></li>
+      <li class="nav-item"><%= link_to "Done", "/users/#{current_user.id}/done", class: 'nav-link btn-secondary'%></li>
+    </ul>
+  </div>
+  <ul>
+    <% @tasks.each do |task| %>
+      <div class='border-bottom p-1'>
+        <li><%= task.content %></li>
+        <div>〆切：<%= task.deadline %></div>
+        <% if task.daily_tasks.present? && task.daily_tasks.last.add_date == Date.today %>
+          <p>Doing中</p>
+        <% else %>
+          <%= form_with(model: task.daily_tasks.build, local: true)do |f| %>
+            <%= f.hidden_field :task_id, :value => task.id %>
+            <%= hidden_field_tag :user_id, task.user_id %>
+            <%= f.submit 'Doing', class: 'btn btn-primary' %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   </ul>
 </div>
-<ul>
-  <% @tasks.each do |task| %>
-    <li><%= task.content %></li>
-    <div>〆切：<%= task.deadline %></div>
-    <% if task.daily_tasks.present? && task.daily_tasks.last.add_date == Date.today %>
-      <p>doing中</p>
-    <% else %>
-      <%= form_with(model: task.daily_tasks.build, local: true)do |f| %>
-        <%= f.hidden_field :task_id, :value => task.id %>
-        <%= hidden_field_tag :user_id, task.user_id %>
-        <%= f.submit 'Doing', class: 'btn btn-primary btn-block' %>
-      <% end %>
-    <% end %>
-  <% end %>
-</ul>
+
 
 

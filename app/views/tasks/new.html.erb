@@ -1,24 +1,21 @@
-  <div class="">
-    <div class="form-wrap">
-      <div class="form-group text-center">
+<div class="container">
+  <div class="form-wrap">
+    <%= form_with model: @task do |f| %>
+      <div class="form-group row mt-3">
+        <%= f.label :content , 'タスク', class: 'form-controll col-md-3' %>
+        <%= f.text_field :content, class: 'form-controll col-md-3' %>
       </div>
-      <%= form_with model: @task do |f| %>
-        <div class="form-group">
-          <%= f.label :content , 'タスク'%>
-          <%= f.text_field :content %>
-        </div>
-        <div class="form-group">
-          <%= f.label :deadline , '〆切'%>
-          <%= f.date_field :deadline %>
-        </div>
-        <div class="form-group">
-          <%= f.label :project_id , 'プロジェクト'%>
-          <%= f.collection_select :project_id, Project.all, :id, :name, include_blank: '選択して下さい' %>
-        </div>
-        <div class="actions">
-          <%= f.submit "投稿", class: "btn btn-primary" %>
-        </div>
-      <% end %>
-    </div>
+      <div class="form-group row">
+        <%= f.label :deadline , '〆切', class: 'form-controll col-md-3'%>
+        <%= f.date_field :deadline, class: 'form-controll col-md-3' %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :project_id , 'プロジェクト', class: 'form-controll col-md-3' %>
+        <%= f.collection_select :project_id, Project.all, :id, :name, include_blank: '選択して下さい', class: 'form-controll col-md-3' %>
+      </div>
+      <div class="form-group row">
+        <%= f.submit "投稿", class: "btn btn-primary form-controll col-md-2" %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -1,13 +1,21 @@
-<div class="col-sm-8">
-  <ul class="nav nav-tabs nav-justified mb-3">
-    <li class="nav-item"><%= link_to "ToDo", "/users/#{current_user.id}/todo", class: 'nav-link'%></li>
-    <li class="nav-item"><%= link_to "Doing", "/users/#{current_user.id}/doing", class: 'nav-link'%></li>
-    <li class="nav-item"><%= link_to "Done", "/users/#{current_user.id}/done", class: 'nav-link active'%></li>
-  </ul>
-</div>
+<div class="container">
+  <div class="mt-3">
+    <ul class="nav nav-tabs nav-justified mb-3">
+      <li class="nav-item"><%= link_to "ToDo", "/users/#{current_user.id}/todo", class: 'nav-link btn-secondary'%></li>
+      <li class="nav-item"><%= link_to "Doing", "/users/#{current_user.id}/doing", class: 'nav-link btn-secondary'%></li>
+      <li class="nav-item"><%= link_to "Done", "/users/#{current_user.id}/done", class: 'nav-link active'%></li>
+    </ul>
+  </div>
 
-<% @tasks.each do |task| %>
-  <li>タスク内容：<%= task.content %></li>
-  <li>締め切り日：<%= task.deadline %></li>
-  <li>完了日：<%= task.updated_at %></li>
-<% end %>
+  <% @tasks.each do |task| %>
+    <div class="p-1 border-bottom">
+      <ul>
+        <li>タスク内容：<%= task.content %></li>
+        <ul>
+          <li>締め切り日：<%= task.deadline %></li>
+          <li>完了日：<%= task.updated_at %></li>
+        </ul>
+      </ul>
+    </div>
+  <% end %>
+</div>

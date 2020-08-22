@@ -1,10 +1,22 @@
-<h2> <%= '所属しているプロジェクト' %> </h2>
+<div class='container'>
+  <div class='row mt-3'>
+    <h2 class=''> <%= '所属しているプロジェクト' %> </h2>
+  </div>
 
-<% @projects.each do |p| %>
-  <%= p.name %>
-  <%= link_to 'タスク', project_path(p) %>
-  <%= link_to 'メンバー', root_path %>
-  
-  <%= link_to '編集', edit_project_path(p) %>
-
-<% end %>
+  <% @projects.each do |p| %>
+    <div class='form-group'>
+      <div class="row">
+        <div class='col-md-4'>
+          <ul>
+            <li><%= p.name %></li>
+          </ul>
+        </div>
+        <div class='col-md-8'>
+          <%= link_to 'タスク', project_path(p), class: 'btn btn-secondary' %>
+          <%= link_to 'メンバー', users_project_path(p), class: 'btn btn-secondary' %>
+          <%= link_to '編集', edit_project_path(p), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
