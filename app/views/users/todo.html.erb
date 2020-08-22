@@ -14,6 +14,7 @@
     <% else %>
       <%= form_with(model: task.daily_tasks.build, local: true)do |f| %>
         <%= f.hidden_field :task_id, :value => task.id %>
+        <%= hidden_field_tag :user_id, task.user_id %>
         <%= f.submit 'Doing', class: 'btn btn-primary btn-block' %>
       <% end %>
     <% end %>

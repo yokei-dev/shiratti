@@ -36,10 +36,10 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     # binding.pry
     if params[:task][:status] == "0"	
-      if params[:daily_task]
+      if params[:daily_task].present?
         @daily_task = DailyTask.find(params[:daily_task_id])
         if @daily_task.update(daily_task_update_params)
-          redirect_to root_path
+          redirect_back(fallback_location: root_path)
         else
           render 'users/doing'
         end
@@ -55,7 +55,7 @@ class TasksController < ApplicationController
     else
       @daily_task = DailyTask.find(params[:daily_task_id])
       if @task.update(task_update_params) && @daily_task.update(daily_task_update_params)
-        redirect_to root_path
+        redirect_back(fallback_location: root_path)
       else
         render 'users/doing'
       end
@@ -76,7 +76,7 @@ class TasksController < ApplicationController
   end
 
   def daily_task_update_params
-    params.require(:daily_task).permit(:condition)
+    params.require(:daily_task).permit(:condition,:comment)
   end
 
 end
