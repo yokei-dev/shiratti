@@ -5,15 +5,25 @@ class UsersController < ApplicationController
   end
 
   def todo
-    @tasks = User.find_by(id: params[:id]).tasks.where(status: 0).order('created_at DESC')
+    @user = User.find_by(id: params[:id])
+    @tasks = @user.tasks.where(status: 0).order('created_at DESC')
   end  
 
   def doing
-    @daily_tasks = current_user.daily_tasks.where(add_date: Date.today.to_s)
+    @tasks_and_daily_tasks = TaskCollection.new(current_user,[],[])
+
+    # @daily_tasks = current_user.daily_tasks.where(add_date: Date.today)
+
+    # @daily_tasks = current_user.daily_tasks.where(add_date: Date.today)
+    # @tasks = @daily_tasks.map do |daily_task|
+    #   daily_task = daily_task.task
+    # end
+    # @tasks_and_daily_tasks = TaskCollection.new(@daily_tasks,@tasks)
+    # binding.pry
   end
 
   def done
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
     @tasks = @user.tasks.where(status: 1).order('created_at DESC')
   end
 

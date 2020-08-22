@@ -6,6 +6,56 @@
   </ul>
 </div>
 
+
+<%= form_with model: @tasks_and_daily_tasks, url: tasks_path, local: true do |form| %>
+  <% index = -1 %>
+  <% @tasks_and_daily_tasks.collection.each do |daily_task, task|%>
+
+    <% unless daily_task.condition %>
+    <% index += 1%>
+    <%= fields_for 'tasks[]', task do |field| %>
+      
+      <div class="field">
+        <%= field.hidden_field :task_id, :value => task.id %>
+        <%= field.label :status, "doing" %>
+        <%= field.check_box(:status, {}, checked_value = 1, unchecked_value = 0 ) %>
+      </div>
+      </br>
+    <% end %>
+
+    <%= fields_for 'daily_tasks[]', daily_task do |field| %>
+      
+      <div class="field">
+        <%= field.hidden_field :daily_task_id, :value => daily_task.id %>
+        <%= field.label :condition, "○", value: 3 %>
+        <%= field.radio_button :condition, 3, class: 'doing', onclick: 'change();', checked: 'checked' %>
+        <%= field.label :condition, "▲", value: 2 %>
+        <%= field.radio_button :condition, 2, class: 'doing', onclick: 'change();' %>
+        <%= field.label :condition, "×", value: 1 %>
+        <%= field.radio_button :condition, 1, class: 'doing', onclick: 'change();' %>
+        <div id="face_<%=index%>"> 
+          <%= field.label :comment, "face and think" %><br>
+          <%= field.text_area :comment %>
+        </div>
+      </div>
+      </br>
+    <% end %>
+
+    <% end %>
+
+
+  <% end %>
+  <div class="actions">
+  <%= form.submit %>
+</div>
+<% end %>
+
+<%= javascript_pack_tag 'users/doing' %>
+
+
+
+
+<% if false %>
   <% @daily_tasks.each do |daily_task| %>
     <% unless daily_task.condition %>
       <%= daily_task.task.content %>
@@ -31,6 +81,6 @@
       <% end %>
     <% end %>
   <% end %>
+  <% end %>
 
-  <%= javascript_pack_tag 'users/doing' %>
   
