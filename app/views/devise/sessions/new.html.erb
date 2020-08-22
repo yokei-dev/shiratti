@@ -1,5 +1,5 @@
-<div class="main">
-  <div class="card devise-card">
+<div class="main container mt-3">
+  <div class="devise-card">
     <div class="form-wrap">
       <div class="form-group text-center">
         <h2 class="logo-img mx-auto"></h2>
@@ -14,15 +14,15 @@
           <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "form-control" %>
         </div>
 
-        <div class="actions">
-          <%= f.submit "サインインする", class: "btn btn-primary w-100" %>
+        <div class="actions row">
+          <%= f.submit "ログインする", class: "btn btn-primary offset-md-3 w-50 " %>
         </div>
       <% end %>
 
       <br>
 
       <p class="devise-link">
-        <%= link_to "登録する", new_user_registration_path %>
+        <%= link_to "新規登録する", new_user_registration_path, class: "btn btn-success" %>
       </p>
 
     </div>
