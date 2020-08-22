@@ -2,8 +2,8 @@
   <div class="mt-3">
     <ul class="nav nav-tabs nav-justified mb-3">
       <li class="nav-item"><%= link_to "ToDo", "/users/#{current_user.id}/todo", class: 'nav-link active'%></li>
-      <li class="nav-item"><%= link_to "Doing", "/users/#{current_user.id}/doing", class: 'nav-link'%></li>
-      <li class="nav-item"><%= link_to "Done", "/users/#{current_user.id}/done", class: 'nav-link'%></li>
+      <li class="nav-item"><%= link_to "Doing", "/users/#{current_user.id}/doing", class: 'nav-link btn-secondary'%></li>
+      <li class="nav-item"><%= link_to "Done", "/users/#{current_user.id}/done", class: 'nav-link btn-secondary'%></li>
     </ul>
   </div>
   <ul>

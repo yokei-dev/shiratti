@@ -19,3 +19,47 @@
 
 //  @import "layouts/navbar"; 
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.full-page {
+  width: 100vw;
+  height: 100vh;
+  background: -moz-linear-gradient(top, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
+  background: -webkit-linear-gradient(top, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
+  background: linear-gradient(to bottom, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
+}
+
+.morning {
+  width: 100vw;
+  height: 100vh;
+  background: -moz-linear-gradient(top, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
+  background: -webkit-linear-gradient(top, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
+  background: linear-gradient(to bottom, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
+}
+
+.noon {
+  width: 100vw;
+  height: 100vh;
+  background: -moz-linear-gradient(top, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
+  background: -webkit-linear-gradient(top, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
+  background: linear-gradient(to bottom, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
+}
+
+.afternoon {
+  width: 100vw;
+  height: 100vh;
+  background: -moz-linear-gradient(top, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
+  background: -webkit-linear-gradient(top, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
+  background: linear-gradient(to bottom, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
+}
+
+.night {
+  width: 100vw;
+  height: 100vh;
+  background: -moz-linear-gradient(top, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
+  background: -webkit-linear-gradient(top, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
+  background: linear-gradient(to bottom, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
+}
