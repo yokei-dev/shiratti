@@ -3,47 +3,70 @@
 
   <div class="form-group p-1 border">
     <p><%= Date.today  %></p>
-
     <% @daily_tasks_0.each do |t| %>
       <div class="border-top ml-3">
         <p>
-          <%= t.task.content  %> ： 
-          <%= '○' if t.condition == 3 %>
-          <%= '△' if t.condition == 2 %>
-          <%= '×' if t.condition == 1 %>
-          <%= '未記入' if t.condition == nil %>
+          <% if t.condition == 3 %>
+            <i class="fa fa-sun-o" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == 2 %>
+            <i class="fa fa-cloud" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == 1 %>
+            <i class="fa fa-umbrella" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == nil %>
+            <i class="fa fa-question" aria-hidden="true"></i>
+          <% end %>
+          <%= t.task.content %>
         </p>
       </div>
     <% end %>
   </div>
 
   <div class="form-group p-1 border">
-    <p><%= Date.today-1  %></p>
+    <p><%= Date.today-1 if @daily_tasks_1 %></p>
 
     <% @daily_tasks_1.each do |t| %>
-      <div  class="border-top ml-3">
+      <div class="border-top ml-3">
         <p>
-          <%= t.task.content  %> ： 
-          <%= '○' if t.condition == 3 %>
-          <%= '△' if t.condition == 2 %>
-          <%= '×' if t.condition == 1 %>
-          <%= '未記入' if t.condition == nil %>
+          <% if t.condition == 3 %>
+            <i class="fa fa-sun-o" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == 2 %>
+            <i class="fa fa-cloud" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == 1 %>
+            <i class="fa fa-umbrella" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == nil %>
+            <i class="fa fa-question" aria-hidden="true"></i>
+          <% end %>
+          <%= t.task.content %>
         </p>
       </div>
     <% end %>
   </div>
 
   <div class="form-group p-1 border">
-    <p><%= Date.today-2 %></p>
+    <p><%= Date.today-2 if @daily_tasks_2 %></p>
 
     <% @daily_tasks_2.each do |t| %>
       <div class="border-top ml-3">
         <p>
-          <%= t.task.content  %> ： 
-          <%= '○' if t.condition == 3 %>
-          <%= '△' if t.condition == 2 %>
-          <%= '×' if t.condition == 1 %>
-          <%= '未記入' if t.condition == nil %>
+          <% if t.condition == 3 %>
+            <i class="fa fa-sun-o" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == 2 %>
+            <i class="fa fa-cloud" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == 1 %>
+            <i class="fa fa-umbrella" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == nil %>
+            <i class="fa fa-question" aria-hidden="true"></i>
+          <% end %>
+          <%= t.task.content %>
         </p>
       </div>
     <% end %>
@@ -55,11 +78,19 @@
     <% @daily_tasks_3.each do |t| %>
       <div class="border-top ml-3">
         <p>
-          <%= t.task.content  %> ： 
-          <%= '○' if t.condition == 3 %>
-          <%= '△' if t.condition == 2 %>
-          <%= '×' if t.condition == 1 %>
-          <%= '未記入' if t.condition == nil %>
+          <% if t.condition == 3 %>
+            <i class="fa fa-sun-o" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == 2 %>
+            <i class="fa fa-cloud" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == 1 %>
+            <i class="fa fa-umbrella" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == nil %>
+            <i class="fa fa-question" aria-hidden="true"></i>
+          <% end %>
+          <%= t.task.content %>
         </p>
       </div>
     <% end %>
@@ -71,11 +102,19 @@
     <% @daily_tasks_4.each do |t| %>
       <div class="border-top ml-3">
         <p>
-          <%= t.task.content  %> ： 
-          <%= '○' if t.condition == 3 %>
-          <%= '△' if t.condition == 2 %>
-          <%= '×' if t.condition == 1 %>
-          <%= '未記入' if t.condition == nil %>
+          <% if t.condition == 3 %>
+            <i class="fa fa-sun-o" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == 2 %>
+            <i class="fa fa-cloud" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == 1 %>
+            <i class="fa fa-umbrella" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == nil %>
+            <i class="fa fa-question" aria-hidden="true"></i>
+          <% end %>
+          <%= t.task.content %>
         </p>
       </div>
     <% end %>
@@ -87,11 +126,19 @@
     <% @daily_tasks_5.each do |t| %>
       <div class="border-top ml-3">
         <p>
-          <%= t.task.content  %> ： 
-          <%= '○' if t.condition == 3 %>
-          <%= '△' if t.condition == 2 %>
-          <%= '×' if t.condition == 1 %>
-          <%= '未記入' if t.condition == nil %>
+          <% if t.condition == 3 %>
+            <i class="fa fa-sun-o" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == 2 %>
+            <i class="fa fa-cloud" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == 1 %>
+            <i class="fa fa-umbrella" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == nil %>
+            <i class="fa fa-question" aria-hidden="true"></i>
+          <% end %>
+          <%= t.task.content %>
         </p>
       </div>
     <% end %>
@@ -103,13 +150,20 @@
     <% @daily_tasks_6.each do |t| %>
       <div class="border-top ml-3">
         <p>
-          <%= t.task.content  %> ： 
-          <%= '○' if t.condition == 3 %>
-          <%= '△' if t.condition == 2 %>
-          <%= '×' if t.condition == 1 %>
-          <%= '未記入' if t.condition == nil %>
+          <% if t.condition == 3 %>
+            <i class="fa fa-sun-o" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == 2 %>
+            <i class="fa fa-cloud" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == 1 %>
+            <i class="fa fa-umbrella" aria-hidden="true"></i>
+          <% end %>
+          <% if t.condition == nil %>
+            <i class="fa fa-question" aria-hidden="true"></i>
+          <% end %>
+          <%= t.task.content %>
         </p>
       </div>
     <% end %>
   </div>
-</div>

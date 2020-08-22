@@ -10,10 +10,10 @@
         <ul class="navbar-nav mr-auto">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <a class="nav-link" href="/users/<%=current_user.id%>">マイページ</a>
+              <a class="nav-link fa fa-user-o" aria-hidden="true" href="/users/<%=current_user.id%>">マイページ</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle fa fa-users" aria-hidden="true" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               プロジェクト
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -24,7 +24,7 @@
               </div>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle fa fa-sticky-note-o" aria-hidden="true" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               タスク
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -35,14 +35,14 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/users/sign_out">サインアウト</a>
+              <a class="nav-link fa fa-sign-out" aria-hidden="true" href="/users/sign_out">サインアウト</a>
             </li>
           <% else %>
             <li class="nav-item">
-              <a class="nav-link" href="/users/sign_in">サインイン</a>
+              <a class="nav-link fa fa-sign-in" aria-hidden="true" href="/users/sign_in">サインイン</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/users/sign_up">サインアップ</a>
+              <a class="nav-link fa fa-user-plus" aria-hidden="true" href="/users/sign_up">サインアップ</a>
             </li>
           <% end %>
         </ul>

@@ -7,33 +7,33 @@
     </ul>
   </div>
 
-    <% @daily_tasks.each do |daily_task| %>
-      <% unless daily_task.condition %>
-        <span>タスク：<%= daily_task.task.content %></span>
-        <% if current_user %>
-          <%= form_with(model: daily_task.task) do |f| %>
+  <% @daily_tasks.each do |daily_task| %>
+    <% unless daily_task.condition %>
+      <span><%= daily_task.task.content %></span>
+      <% if current_user %>
+        <%= form_with(model: daily_task.task) do |f| %>
           <div class='border-bottom p-1 mb-2'>
-            <%= f.label :status, "doing", class: 'form-label'%>
+            <%= f.label :status, "doing", class: 'form-label' %>
             <%= f.check_box(:status, {}, checked_value = 1, unchecked_value = 0 ) %><br>
             <%= fields_for daily_task do |c| %>
-              <%= c.label :condition, "○", value: 3, class: 'form-label' %>
+              <i class="fa fa-sun-o form-label" aria-hidden="true"></i>
               <%= c.radio_button :condition, 3, id: 'doing', onclick: 'change();', checked: 'checked' %>
-              <%= c.label :condition, "▲", value: 2, class: 'form-label' %>
+              <i class="fa fa-cloud form-label" aria-hidden="true"></i>
               <%= c.radio_button :condition, 2, id: 'doing', onclick: 'change();' %>
-              <%= c.label :condition, "×", value: 1, class: 'form-label' %>
+              <i class="fa fa-umbrella form-label" aria-hidden="true"></i>
               <%= c.radio_button :condition, 1, id: 'doing', onclick: 'change();' %>
               <%= hidden_field_tag :daily_task_id,daily_task.id %><br>
               <span id="face"> 
                 <%= c.label :comment, "face and think" %><br>
                 <%= c.text_area :comment %>
               </span>
-            <%= f.submit %>
+              <%= f.submit %>
             <% end %>
           </div>
-          <% end %>
         <% end %>
       <% end %>
     <% end %>
+  <% end %>
 
     <%= javascript_pack_tag 'users/doing' %>
 </div>
