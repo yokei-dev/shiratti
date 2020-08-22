@@ -9,20 +9,31 @@ class TasksController < ApplicationController
 	end
 
 	def create
-		#binding.pry
-		@task = Task.new(task_params)
-		if @task.save
-      flash[:success] = 'タスクを投稿しました。'
-      if @task.project_id == nil
-        redirect_to controller: :users, action: :todo, id: current_user.id
+    # binding.pry #idを渡すとき、eachか何かで回す
+    if params[:task] && params[:task][:content]
+      @task = Task.new(task_params)
+      if @task.save
+        flash[:success] = 'タスクを投稿しました。'
+        if @task.project_id == nil
+          redirect_to controller: :users, action: :todo, id: current_user.id
+        else
+          redirect_to project_url(id: @task.project_id)
+        end
       else
-        redirect_to project_url(id: @task.project_id)
+        flash.now[:danger] = 'タスクの投稿に失敗しました。'
+        render :new
       end
-		else
-			flash.now[:danger] = 'タスクの投稿に失敗しました。'
-			render :new
-		end
-	end
+    else
+      @tasks = TaskCollection.new(current_user, tasks_collection_params,daily_tasks_collection_params)
+      # binding.pry
+      if @tasks.save
+        redirect_to root_url
+      else
+        render :new
+      end
+    end
+  end
+
 
 	def destroy
 		#binding.pry
@@ -71,7 +82,7 @@ class TasksController < ApplicationController
     unless params[:task][:project_id].present?
       params.require(:task).permit(:content, :deadline, :project_id, :status).merge(user_id: current_user.id)#プロジェクトidがない場合
     else
-        params.require(:task).permit(:content, :deadline, :project_id, :user_id, :status)#プロジェクトidがある場合（ユーザーへの割り振りはこちら）
+      params.require(:task).permit(:content, :deadline, :project_id, :user_id, :status)#プロジェクトidがある場合（ユーザーへの割り振りはこちら）
     end
   end
 
@@ -82,5 +93,15 @@ class TasksController < ApplicationController
   def daily_task_update_params
     params.require(:daily_task).permit(:condition,:comment)
   end
+
+  def tasks_collection_params
+    # binding.pry
+    params.require(:tasks)
+  end
+
+  def daily_tasks_collection_params
+    params.require(:daily_tasks)
+  end
+
 
 end
