@@ -9,10 +9,16 @@
   <% @tasks.each do |task| %>
     <li><%= task.content %></li>
     <div>〆切：<%= task.deadline %></div>
-    <%= form_with(model: task.daily_tasks.build, local: true)do |f| %>
-      <%= f.hidden_field :task_id, :value => task.id %>
-      <%= f.submit 'Doing', class: 'btn btn-primary btn-block' %>
+    <% if task.daily_tasks.present? && task.daily_tasks.last.add_date == Date.today %>
+      <p>doing中</p>
+    <% else %>
+      <%= form_with(model: task.daily_tasks.build, local: true)do |f| %>
+        <%= f.hidden_field :task_id, :value => task.id %>
+        <%= hidden_field_tag :user_id, task.user_id %>
+        <%= f.submit 'Doing', class: 'btn btn-primary btn-block' %>
+      <% end %>
     <% end %>
-    <>
   <% end %>
 </ul>
+
+

@@ -1,8 +1,6 @@
 class TasksController < ApplicationController
 	before_action :authenticate_user!
 
-
-
 	def show
 	end
 
@@ -38,17 +36,26 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     # binding.pry
     if params[:task][:status] == "0"	
-      if @task.update(task_params)
-        flash[:success] = 'タスクは正常に更新されました'
-        redirect_back(fallback_location: root_path)
+      if params[:daily_task].present?
+        @daily_task = DailyTask.find(params[:daily_task_id])
+        if @daily_task.update(daily_task_update_params)
+          redirect_back(fallback_location: root_path)
+        else
+          render 'users/doing'
+        end
       else
-        flash.now[:danger] = 'タスクは更新されませんでした'
-        render :edit
+        if @task.update(task_params)
+          flash[:success] = 'タスクは正常に更新されました'
+          redirect_back(fallback_location: root_path)
+        else
+          flash.now[:danger] = 'タスクは更新されませんでした'
+          render :edit
+        end
       end
     else
       @daily_task = DailyTask.find(params[:daily_task_id])
       if @task.update(task_update_params) && @daily_task.update(daily_task_update_params)
-        redirect_to root_path
+        redirect_back(fallback_location: root_path)
       else
         render 'users/doing'
       end
@@ -58,13 +65,9 @@ class TasksController < ApplicationController
 	private
   def task_params
     unless params[:task][:project_id].present?
-      if params[:task][:user_id].present?
-        params.require(:task).permit(:content, :deadline, :project_id, :status).merge(user_id: current_user.id)
-      else
-        params.require(:task).permit(:content, :deadline, :project_id, :status)
-      end
+      params.require(:task).permit(:content, :deadline, :project_id, :status).merge(user_id: current_user.id)#プロジェクトidがない場合
     else
-      params.require(:task).permit(:content, :deadline, :project_id, :user_id, :status)
+        params.require(:task).permit(:content, :deadline, :project_id, :user_id, :status)#プロジェクトidがある場合（ユーザーへの割り振りはこちら）
     end
   end
 
@@ -73,7 +76,7 @@ class TasksController < ApplicationController
   end
 
   def daily_task_update_params
-    params.require(:daily_task).permit(:condition)
+    params.require(:daily_task).permit(:condition,:comment)
   end
 
 end
