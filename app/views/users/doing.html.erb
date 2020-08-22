@@ -1,36 +1,40 @@
-<div class="col-sm-8">
-  <ul class="nav nav-tabs nav-justified mb-3">
-    <li class="nav-item"><%= link_to "ToDo", "/users/#{current_user.id}/todo", class: 'nav-link'%></li>
-    <li class="nav-item"><%= link_to "Doing", "/users/#{current_user.id}/doing", class: 'nav-link active'%></li>
-    <li class="nav-item"><%= link_to "Done", "/users/#{current_user.id}/done", class: 'nav-link'%></li>
-  </ul>
-</div>
+<div class="container">
+  <div class="mt-3">
+    <ul class="nav nav-tabs nav-justified mb-3">
+      <li class="nav-item"><%= link_to "ToDo", "/users/#{current_user.id}/todo", class: 'nav-link btn-secondary'%></li>
+      <li class="nav-item"><%= link_to "Doing", "/users/#{current_user.id}/doing", class: 'nav-link active'%></li>
+      <li class="nav-item"><%= link_to "Done", "/users/#{current_user.id}/done", class: 'nav-link btn-secondary'%></li>
+    </ul>
+  </div>
 
-  <% @daily_tasks.each do |daily_task| %>
-    <% unless daily_task.condition %>
-      <%= daily_task.task.content %>
-      <% if current_user %>
-        <%= form_with(model: daily_task.task) do |f| %>
-          <%= f.label :status, "doing" %>
-          <%= f.check_box(:status, {}, checked_value = 1, unchecked_value = 0 ) %><br>
-          <%= fields_for daily_task do |c| %>
-            <%= c.label :condition, "○", value: 3 %>
-            <%= c.radio_button :condition, 3, id: 'doing', onclick: 'change();', checked: 'checked' %>
-            <%= c.label :condition, "▲", value: 2 %>
-            <%= c.radio_button :condition, 2, id: 'doing', onclick: 'change();' %>
-            <%= c.label :condition, "×", value: 1 %>
-            <%= c.radio_button :condition, 1, id: 'doing', onclick: 'change();' %>
-            <%= hidden_field_tag :daily_task_id,daily_task.id %><br>
-            <div id="face"> 
-              <%= c.label :comment, "face and think" %><br>
-              <%= c.text_area :comment %>
-            </div>
-          <%= f.submit %>
+    <% @daily_tasks.each do |daily_task| %>
+      <% unless daily_task.condition %>
+        <span>タスク：<%= daily_task.task.content %></span>
+        <% if current_user %>
+          <%= form_with(model: daily_task.task) do |f| %>
+          <div class='border-bottom p-1 mb-2'>
+            <%= f.label :status, "doing", class: 'form-label'%>
+            <%= f.check_box(:status, {}, checked_value = 1, unchecked_value = 0 ) %><br>
+            <%= fields_for daily_task do |c| %>
+              <%= c.label :condition, "○", value: 3, class: 'form-label' %>
+              <%= c.radio_button :condition, 3, id: 'doing', onclick: 'change();', checked: 'checked' %>
+              <%= c.label :condition, "▲", value: 2, class: 'form-label' %>
+              <%= c.radio_button :condition, 2, id: 'doing', onclick: 'change();' %>
+              <%= c.label :condition, "×", value: 1, class: 'form-label' %>
+              <%= c.radio_button :condition, 1, id: 'doing', onclick: 'change();' %>
+              <%= hidden_field_tag :daily_task_id,daily_task.id %><br>
+              <span id="face"> 
+                <%= c.label :comment, "face and think" %><br>
+                <%= c.text_area :comment %>
+              </span>
+            <%= f.submit %>
+            <% end %>
+          </div>
           <% end %>
         <% end %>
       <% end %>
     <% end %>
-  <% end %>
 
-  <%= javascript_pack_tag 'users/doing' %>
+    <%= javascript_pack_tag 'users/doing' %>
+</div>
   

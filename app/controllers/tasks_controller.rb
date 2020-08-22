@@ -12,8 +12,12 @@ class TasksController < ApplicationController
 		#binding.pry
 		@task = Task.new(task_params)
 		if @task.save
-			flash[:success] = 'タスクを投稿しました。'
-			redirect_to root_path
+      flash[:success] = 'タスクを投稿しました。'
+      if @task.project_id == nil
+        redirect_to controller: :users, action: :todo, id: current_user.id
+      else
+        redirect_to project_url(id: @task.project_id)
+      end
 		else
 			flash.now[:danger] = 'タスクの投稿に失敗しました。'
 			render :new
