@@ -14,11 +14,11 @@
           <%= f.label :status, "doing" %>
           <%= f.check_box(:status, {}, checked_value = 1, unchecked_value = 0 ) %><br>
           <%= fields_for daily_task do |c| %>
-            <%= c.label :condition, "○", value: 3 %>
+            <i class="fa fa-sun-o" aria-hidden="true"></i>
             <%= c.radio_button :condition, 3, id: 'doing', onclick: 'change();', checked: 'checked' %>
-            <%= c.label :condition, "▲", value: 2 %>
+            <i class="fa fa-cloud" aria-hidden="true"></i>
             <%= c.radio_button :condition, 2, id: 'doing', onclick: 'change();' %>
-            <%= c.label :condition, "×", value: 1 %>
+            <i class="fa fa-umbrella" aria-hidden="true"></i>
             <%= c.radio_button :condition, 1, id: 'doing', onclick: 'change();' %>
             <%= hidden_field_tag :daily_task_id,daily_task.id %><br>
             <div id="face"> 
