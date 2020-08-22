@@ -3,7 +3,7 @@
 <% @projects.each do |p| %>
   <%= p.name %>
   <%= link_to 'タスク', project_path(p) %>
-  <%= link_to 'メンバー', root_path %>
+  <%= link_to 'メンバー', users_project_path(p) %>
   
   <%= link_to '編集', edit_project_path(p) %>
 
