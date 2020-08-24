@@ -22,6 +22,10 @@
           <%= f.label :boss_id, 'プロジェクトマネージャー', class: 'ml-2' %>
           <%= f.collection_select :boss_id, User.all, :id, :name, include_blank: '選択して下さい', class: 'form-control ml-2' %>
         </div>
+        <div class=' form-group row mt-3'>
+          <%= f.label :channel, 'チャンネル名(例：#all)', class: 'ml-2' %>
+          <%= f.text_field :channel, :placeholder => "all", class: 'form-control ml-2' %>
+        </div>
         <div class=' form-group row'>
           <%= f.submit '登録', class: 'btn btn-primary ml-2' %>
         </div>
