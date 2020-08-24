@@ -1,10 +1,10 @@
 <div class='container'>
-  <h2 class='mt-3'>タスク結果</h2>
+  <h2 class='mt-3'>タスクの振り返り</h2>
 
-  <div class="form-group p-1 border">
-    <p><%= Date.today  %></p>
+  <div class="form-group task">
+    <p><%= Date.today  %><%= DailyUser.find_by(user_id: current_user.id, add_date: Date.today).face if DailyUser.find_by(user_id: current_user.id, add_date: Date.today).present? %></p>
     <% @daily_tasks_0.each do |t| %>
-      <div class="border-top ml-3">
+      <div class=" ml-3 content">
         <p>
           <% if t.condition == 3 %>
             <i class="fa fa-sun-o" aria-hidden="true"></i>
@@ -27,11 +27,11 @@
     <% end %>
   </div>
 
-  <div class="form-group p-1 border">
-    <p><%= Date.today-1 if @daily_tasks_1 %></p>
+  <div class="form-group task">
+    <p><%= Date.today-1 if @daily_tasks_1 %><%= DailyUser.find_by(user_id: current_user.id, add_date: Date.today-1).face if DailyUser.find_by(user_id: current_user.id, add_date: Date.today-1).present?%></p>
 
     <% @daily_tasks_1.each do |t| %>
-      <div class="border-top ml-3">
+      <div class=" ml-3 content">
         <p>
           <% if t.condition == 3 %>
             <i class="fa fa-sun-o" aria-hidden="true"></i>
@@ -54,11 +54,11 @@
     <% end %>
   </div>
 
-  <div class="form-group p-1 border">
-    <p><%= Date.today-2 if @daily_tasks_2 %></p>
+  <div class="form-group task">
+    <p><%= Date.today-2 if @daily_tasks_2 %><%= DailyUser.find_by(user_id: current_user.id, add_date: Date.today-2).face if DailyUser.find_by(user_id: current_user.id, add_date: Date.today-2).present? %></p>
 
     <% @daily_tasks_2.each do |t| %>
-      <div class="border-top ml-3">
+      <div class="ml-3 content">
         <p>
           <% if t.condition == 3 %>
             <i class="fa fa-sun-o" aria-hidden="true"></i>
@@ -81,11 +81,11 @@
     <% end %>
   </div>
 
-  <div class="form-group p-1 border">
-    <p><%= Date.today-3 if @daily_tasks_3 %></p>
+  <div class="form-group task">
+    <p><%= Date.today-3 if @daily_tasks_3 %><%= DailyUser.find_by(user_id: current_user.id, add_date: Date.today-3).face if DailyUser.find_by(user_id: current_user.id, add_date: Date.today-3).present? %></p>
 
     <% @daily_tasks_3.each do |t| %>
-      <div class="border-top ml-3">
+      <div class=" ml-3 content">
         <p>
           <% if t.condition == 3 %>
             <i class="fa fa-sun-o" aria-hidden="true"></i>
@@ -108,11 +108,11 @@
     <% end %>
   </div>
 
-  <div class="form-group p-1 border">
-    <p><%= Date.today-4 if @daily_tasks_4 %></p>
+  <div class="form-group task">
+    <p><%= Date.today-4 if @daily_tasks_4 %><%= DailyUser.find_by(user_id: current_user.id, add_date: Date.today-4).face if DailyUser.find_by(user_id: current_user.id, add_date: Date.today-4).present? %></p>
 
     <% @daily_tasks_4.each do |t| %>
-      <div class="border-top ml-3">
+      <div class=" ml-3 content">
         <p>
           <% if t.condition == 3 %>
             <i class="fa fa-sun-o" aria-hidden="true"></i>
@@ -135,11 +135,11 @@
     <% end %>
   </div>
 
-  <div class="form-group p-1 border">
-    <p><%= Date.today-5 if @daily_tasks_5 %></p>
+  <div class="form-group task">
+    <p><%= Date.today-5 if @daily_tasks_5 %><%= DailyUser.find_by(user_id: current_user.id, add_date: Date.today-5).face if DailyUser.find_by(user_id: current_user.id, add_date: Date.today-5).present? %></p>
 
     <% @daily_tasks_5.each do |t| %>
-      <div class="border-top ml-3">
+      <div class=" ml-3 content">
         <p>
           <% if t.condition == 3 %>
             <i class="fa fa-sun-o" aria-hidden="true"></i>
@@ -162,11 +162,11 @@
     <% end %>
   </div>
 
-  <div class="form-group p-1 border">
-    <p><%= Date.today-6 if @daily_tasks_6 %></p>
+  <div class="form-group task">
+    <p><%= Date.today-6 if @daily_tasks_6 %><%= DailyUser.find_by(user_id: current_user.id, add_date: Date.today-6).face if DailyUser.find_by(user_id: current_user.id, add_date: Date.today-6).present? %></p>
 
     <% @daily_tasks_6.each do |t| %>
-      <div class="border-top ml-3">
+      <div class=" ml-3 content">
         <p>
           <% if t.condition == 3 %>
             <i class="fa fa-sun-o" aria-hidden="true"></i>

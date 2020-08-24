@@ -1,29 +1,31 @@
-<div class="row mt-3">
-  <h2 class="offset-md-1"> <%= 'プロジェクト一覧' %> </h2>
-</div>
-
 <div class='container'>
-<% @projects.each do |p| %>
-  <div class='row'>
-    <div class='col-md-7'>
-      <%= p.name %>
-    </div>
-    <div class='offset-md-1 col-md-2 form-group'>
-      <% if current_user.joining?(p) %>
-        <%= form_with(model: current_user.user_projects.find_by(project_id: p.id), local: true, method: :delete) do |f| %>
-          <%= hidden_field_tag :project_id, p.id %>
-          <%= f.submit '参加済み', class: 'form-control btn btn-secondary' %>
-        <% end %>
-      <% else %>
-        <%= form_with(model: current_user.user_projects.build, local: true) do |f| %>
-          <%= hidden_field_tag :project_id, p.id %>
-          <%= f.submit '参加する', class: 'form-control btn btn-success' %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class='col-md-2 form-group'>
-      <%= link_to '編集', edit_project_path(p), class: 'form-control btn btn-primary' %>
-    </div>
+  <div class="row mt-3">
+    <h2 class=""> 全てのプロジェクト一覧 </h2>
   </div>
-<% end %>
+
+  <% @projects.each do |p| %>
+    <div class='task form-group'>
+      <div class='row'>
+        <div class='col-md-7'>
+          <%= p.name %>
+        </div>
+        <div class='offset-md-1 col-md-2'>
+          <% if current_user.joining?(p) %>
+            <%= form_with(model: current_user.user_projects.find_by(project_id: p.id), local: true, method: :delete) do |f| %>
+              <%= hidden_field_tag :project_id, p.id %>
+              <%= f.submit '参加済み', class: 'form-control btn btn-secondary' %>
+            <% end %>
+          <% else %>
+            <%= form_with(model: current_user.user_projects.build, local: true) do |f| %>
+              <%= hidden_field_tag :project_id, p.id %>
+              <%= f.submit '参加する', class: 'form-control btn btn-success' %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class='col-md-2'>
+          <%= link_to '編集', edit_project_path(p), class: 'form-control btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
