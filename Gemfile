@@ -63,7 +63,12 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 
 gem 'slack-notifier'
+gem 'slack-api'
+
 
 gem 'gemoji'
 
 gem 'font-awesome-rails'
+
+gem 'whenever', :require => false
+
