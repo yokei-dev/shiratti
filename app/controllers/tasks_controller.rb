@@ -27,7 +27,7 @@ class TasksController < ApplicationController
       @tasks = TaskCollection.new(current_user, tasks_collection_params,daily_tasks_collection_params)
       # binding.pry
       if @tasks.save
-        redirect_to root_url
+        redirect_to controller: :users, action: :done, id: current_user.id      
       else
         render :new
       end
@@ -54,7 +54,8 @@ class TasksController < ApplicationController
       if params[:daily_task].present?
         @daily_task = DailyTask.find(params[:daily_task_id])
         if @daily_task.update(daily_task_update_params)
-          redirect_back(fallback_location: root_path)
+          redirect_to controller: 'users', action: 'done'
+          # redirect_back(fallback_location: root_path)
         else
           render 'users/doing'
         end
@@ -67,13 +68,14 @@ class TasksController < ApplicationController
           render :edit
         end
       end
-    else
-      @daily_task = DailyTask.find(params[:daily_task_id])
-      if @task.update(task_update_params) && @daily_task.update(daily_task_update_params)
-        redirect_back(fallback_location: root_path)
-      else
-        render 'users/doing'
-      end
+    # else
+    #   @daily_task = DailyTask.find(params[:daily_task_id])
+    #   if @task.update(task_update_params) && @daily_task.update(daily_task_update_params)
+    #     redirect_to controller: 'users', action: 'done'
+    #     # redirect_back(fallback_location: root_path)
+    #   else
+    #     render 'users/doing'
+    #   end
     end
   end
 
@@ -86,13 +88,13 @@ class TasksController < ApplicationController
     end
   end
 
-	def task_update_params
-	  params.require(:task).permit(:status)
-  end
+	# def task_update_params
+	#   params.require(:task).permit(:status)
+  # end
 
-  def daily_task_update_params
-    params.require(:daily_task).permit(:condition,:comment)
-  end
+  # def daily_task_update_params
+  #   params.require(:daily_task).permit(:condition,:comment)
+  # end
 
   def tasks_collection_params
     # binding.pry
