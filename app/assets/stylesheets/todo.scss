@@ -1,0 +1,19 @@
+.btn {
+  width: 100px;
+  height: 34px;
+  color: #4FA6D2;
+  background: #ffffff00;
+}
+.btn-main:hover {
+  box-shadow: none;
+  color: #D8ECF6;
+  background: #14274490;
+}
+
+.btn-no {
+  width: 100px;
+  height: 34px;
+  color: #4FA6D2;
+  background: #ffffff00;
+  pointer-events: none;
+}
