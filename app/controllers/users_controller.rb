@@ -5,26 +5,39 @@ class UsersController < ApplicationController
   end
 
   def todo
-    @tasks = User.find_by(id: params[:id]).tasks.where(status: 0).order('created_at DESC')
+    @user = User.find_by(id: params[:id])
+    @tasks = @user.tasks.where(status: 0).order('created_at DESC')
   end  
 
   def doing
-    @daily_tasks = current_user.daily_tasks.where(add_date: Date.today.to_s)
+    @tasks_and_daily_tasks = TaskCollection.new(current_user,[],[])
+
+    # @daily_tasks = current_user.daily_tasks.where(add_date: Date.today)
+
+    # @daily_tasks = current_user.daily_tasks.where(add_date: Date.today)
+    # @tasks = @daily_tasks.map do |daily_task|
+    #   daily_task = daily_task.task
+    # end
+    # @tasks_and_daily_tasks = TaskCollection.new(@daily_tasks,@tasks)
+    # binding.pry
   end
 
   def done
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
     @tasks = @user.tasks.where(status: 1).order('created_at DESC')
   end
 
   def show
-    @daily_tasks_0 = current_user.daily_tasks.where(add_date: Date.today)
-    @daily_tasks_1 = current_user.daily_tasks.where(add_date: Date.today-1)
-    @daily_tasks_2 = current_user.daily_tasks.where(add_date: Date.today-2)
-    @daily_tasks_3 = current_user.daily_tasks.where(add_date: Date.today-3)
-    @daily_tasks_4 = current_user.daily_tasks.where(add_date: Date.today-4)
-    @daily_tasks_5 = current_user.daily_tasks.where(add_date: Date.today-5)
-    @daily_tasks_6 = current_user.daily_tasks.where(add_date: Date.today-6)
+    @user = User.find_by(id: params[:id])
+    @daily_tasks_0 = @user.daily_tasks.where(add_date: Date.today)
+    @daily_tasks_1 = @user.daily_tasks.where(add_date: Date.today-1)
+    @daily_tasks_2 = @user.daily_tasks.where(add_date: Date.today-2)
+    @daily_tasks_3 = @user.daily_tasks.where(add_date: Date.today-3)
+    @daily_tasks_4 = @user.daily_tasks.where(add_date: Date.today-4)
+    @daily_tasks_5 = @user.daily_tasks.where(add_date: Date.today-5)
+    @daily_tasks_6 = @user.daily_tasks.where(add_date: Date.today-6)
+
+    
   end
 
 end
