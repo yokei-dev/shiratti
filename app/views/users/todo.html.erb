@@ -10,7 +10,9 @@
     <% @tasks.each do |task| %>
       <div class='task'>
         <ul>
-          <li><%= task.project.name %>：<%= task.content %></li>
+          <% if task.project.present? %>        
+            <li><%= task.project.name %>：<%= task.content %></li>
+          <% end %>
           <ul>
             <li>〆切：<%= task.deadline %></li>
           <% if task.daily_tasks.present? && task.daily_tasks.last.add_date == Date.today %>
