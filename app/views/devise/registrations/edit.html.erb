@@ -9,21 +9,26 @@
         <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "form-control" %>
       </div>
 
+      <div class="form-group">
+        <%= f.label :SlackID, class: 'form_label' %>
+        <%= f.text_field :slackid, autofocus: true, placeholder: "SlackID", class: "form-control" %>
+      </div>
+
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
 
       <div class="field form-group">
-        <%= f.label :パスワード, class: 'form-label' %> <i>(変える必要がなけらば、そのままです)</i><br />
+        <%= f.label :新しいパスワード, class: 'form-label' %>
         <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "form-control" %>
         <% if @minimum_password_length %>
 
-          <em>最小<%= @minimum_password_length %>文字</em>
+          <em><%= @minimum_password_length %>文字以上</em>
         <% end %>
       </div>
 
       <div class="field form-group">
-        <%= f.label :パスワードの確認, class: 'form-label' %><br />
+        <%= f.label :新しいパスワードの確認, class: 'form-label' %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワードの確認", class: "form-control" %>
         </div>
 

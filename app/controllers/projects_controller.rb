@@ -57,6 +57,6 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:name, :boss_id)
+    params.require(:project).permit(:name, :boss_id, :channel)
   end
 end

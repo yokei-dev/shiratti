@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_034029) do
+ActiveRecord::Schema.define(version: 2020_08_24_092812) do
 
   create_table "daily_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_034029) do
     t.bigint "boss_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "channel"
     t.index ["boss_id"], name: "index_projects_on_boss_id"
   end
 
@@ -72,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_034029) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name", default: "", null: false
+    t.string "slackid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

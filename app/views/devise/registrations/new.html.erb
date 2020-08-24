@@ -15,6 +15,10 @@
         </div>
 
         <div class="form-group">
+          <%= f.text_field :slackid, autofocus: true, placeholder: "SlackID", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
           <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "form-control" %>
         </div>
 
