@@ -1,5 +1,14 @@
 <%= form_with(model: @project, local: true) do |f| %>
   <div class='container'>
+    <% if @project.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @project.errors.full_messages.each do |pjt| %>
+            <li><%= pjt %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class='form-group row mt-3'>
       <%= f.label :name, 'プロジェクト名' %>
       <%= f.text_field :name, class: 'form-control' %>
