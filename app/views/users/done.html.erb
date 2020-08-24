@@ -10,7 +10,7 @@
   <% @tasks.each do |task| %>
     <div class="task">
       <ul>
-        <li>タスク内容：<%= task.content %></li>
+        <li><%= task.project.name %>：<%= task.content %></li>
         <ul>
           <li>締め切り日：<%= task.deadline %></li>
           <li>完了日：<%= task.updated_at.strftime('%Y-%m-%d') %></li>

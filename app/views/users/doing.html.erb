@@ -22,7 +22,7 @@
     <% @tasks_and_daily_tasks.collection.each do |daily_task, task|%>
       <% unless daily_task.condition %>
         <div class='task'>
-          <span><%= daily_task.task.content %></span>
+          <span><%= daily_task.task.project.name %>：<%= daily_task.task.content %></span>
           <% index += 1%>
           <%= fields_for 'tasks[]', task do |field| %>
       

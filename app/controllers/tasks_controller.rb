@@ -43,15 +43,15 @@ class TasksController < ApplicationController
         @daily_user.motivation = sum/i
         @daily_user.add_date = Date.today
         if 1.0 <= @daily_user.motivation && @daily_user.motivation < 1.4
-          @daily_user.face = "😍"
+          @daily_user.face = "😱"
         elsif @daily_user.motivation < 1.8
-          @daily_user.face = "😄"
+          @daily_user.face = "😢"
         elsif @daily_user.motivation < 2.2
           @daily_user.face = "😑"
         elsif @daily_user.motivation < 2.6
-          @daily_user.face = "😢"
+          @daily_user.face = "😄"
         elsif @daily_user.motivation <= 3.0
-          @daily_user.face = "😱"
+          @daily_user.face = "😍"
         end
         if @daily_user.save
           redirect_to controller: :users, action: :done, id: current_user.id      
