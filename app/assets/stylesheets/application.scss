@@ -24,16 +24,28 @@
 body {
   margin: 0;
   padding: 0;
+  padding-top: 60px;
 }
 
 .full-page {
   width: 100vw;
   height: 100vh;
+}
+
+
+.full-page:after {/*擬似要素をつくる*/
+  position: fixed;/*固定配置*/
+  top: 0; left: 0;/*左上に固定*/
+  width: 100%; height: 100%;/*画面全体を覆う*/
+  content: "";
+  z-index: -1;
   background: -moz-linear-gradient(top, #3297C9, #6EB7DB 20%, #B2D9ED 60%, #D7EBF6);
   background: -webkit-linear-gradient(top, #3297C9, #6EB7DB 20%, #B2D9ED 60%, #D7EBF6);
   background: linear-gradient(to bottom, #3297C9, #6EB7DB 20%, #B2D9ED 60%, #D7EBF6);
 }
 
+
+時間で変える
 .morning {
   width: 100vw;
   height: 100vh;
