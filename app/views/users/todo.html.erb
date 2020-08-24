@@ -6,23 +6,28 @@
       <li class="nav-item"><%= link_to "Done", "/users/#{current_user.id}/done", class: 'nav-link btn-secondary'%></li>
     </ul>
   </div>
-  <ul>
+
     <% @tasks.each do |task| %>
-      <div class='border-bottom p-1'>
-        <li><%= task.content %></li>
-        <div>〆切：<%= task.deadline %></div>
-        <% if task.daily_tasks.present? && task.daily_tasks.last.add_date == Date.today %>
-          <p>Doing中</p>
-        <% else %>
-          <%= form_with(model: task.daily_tasks.build, local: true)do |f| %>
-            <%= f.hidden_field :task_id, :value => task.id %>
-            <%= hidden_field_tag :user_id, task.user_id %>
-            <%= f.submit 'Doing', class: 'btn btn-primary' %>
+      <div class='task'>
+        <ul>
+          <li><%= task.project.name %>：<%= task.content %></li>
+          <ul>
+            <li>〆切：<%= task.deadline %></li>
+          <% if task.daily_tasks.present? && task.daily_tasks.last.add_date == Date.today %>
+            <p class=''>Doing中</p>
+          <% else %>
+            <%= form_with(model: task.daily_tasks.build, local: true)do |f| %>
+              <%= f.hidden_field :task_id, :value => task.id %>
+              <%= hidden_field_tag :user_id, task.user_id %>
+              <%= f.submit 'Doing', class: 'btn btn-primary' %>
+            <% end %>
           <% end %>
-        <% end %>
+          </ul>
+        </ul>
       </div>
+
     <% end %>
-  </ul>
+
 </div>
 
 
