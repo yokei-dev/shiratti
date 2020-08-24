@@ -7,6 +7,9 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 
 RUN apt-get update && apt-get install -y nodejs yarn postgresql-client
 
+RUN apt-get install -y cron # cronインストール
+
+
 ENV APP_HOME /myapp
 RUN mkdir /myapp
 WORKDIR /myapp
@@ -24,5 +27,5 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
-# Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0"]
+RUN bundle exec whenever --update-crontab # wheneverでcrontab書き込み
+CMD ["/startup.sh"]
