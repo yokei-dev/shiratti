@@ -43,8 +43,7 @@
               <i class="fa fa-cloud form-label" aria-hidden="true"></i>
               <%= field.radio_button :condition, 2, class: 'doing', onclick: 'change();' %>
               <i class="fa fa-umbrella form-label" aria-hidden="true"></i>
-              <%= field.radio_button :condition, 1, class: 'doing', onclick: 'change();' %>
-              <div id="face_<%=index%>"> 
+              <%= field.radio_button :condition, 1, class: 'doing', onclick: 'change();' %>              <div id="face_<%=index%>"> 
                 <%= field.label :comment, "face and think" %><br>
                 <%= field.text_area :comment %>
               </div>
