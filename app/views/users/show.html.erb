@@ -1,10 +1,10 @@
 <div class='container'>
-  <h2 class='mt-3'>タスク結果</h2>
+  <h2 class='mt-3'>タスクの振り返り</h2>
 
-  <div class="form-group p-1 border">
+  <div class="task form-group ">
     <p><%= Date.today  %></p>
     <% @daily_tasks_0.each do |t| %>
-      <div class="border-top ml-3">
+      <div class=" ml-3 content">
         <p>
           <% if t.condition == 3 %>
             <i class="fa fa-sun-o" aria-hidden="true"></i>
@@ -27,11 +27,11 @@
     <% end %>
   </div>
 
-  <div class="form-group p-1 border">
+  <div class="form-group task">
     <p><%= Date.today-1 if @daily_tasks_1 %></p>
 
     <% @daily_tasks_1.each do |t| %>
-      <div class="border-top ml-3">
+      <div class=" ml-3 content">
         <p>
           <% if t.condition == 3 %>
             <i class="fa fa-sun-o" aria-hidden="true"></i>
@@ -54,11 +54,11 @@
     <% end %>
   </div>
 
-  <div class="form-group p-1 border">
+  <div class="form-group task">
     <p><%= Date.today-2 if @daily_tasks_2 %></p>
 
     <% @daily_tasks_2.each do |t| %>
-      <div class="border-top ml-3">
+      <div class="ml-3 content">
         <p>
           <% if t.condition == 3 %>
             <i class="fa fa-sun-o" aria-hidden="true"></i>
@@ -81,11 +81,11 @@
     <% end %>
   </div>
 
-  <div class="form-group p-1 border">
+  <div class="form-group task">
     <p><%= Date.today-3 if @daily_tasks_3 %></p>
 
     <% @daily_tasks_3.each do |t| %>
-      <div class="border-top ml-3">
+      <div class=" ml-3 content">
         <p>
           <% if t.condition == 3 %>
             <i class="fa fa-sun-o" aria-hidden="true"></i>
@@ -108,11 +108,11 @@
     <% end %>
   </div>
 
-  <div class="form-group p-1 border">
+  <div class="form-group task">
     <p><%= Date.today-4 if @daily_tasks_4 %></p>
 
     <% @daily_tasks_4.each do |t| %>
-      <div class="border-top ml-3">
+      <div class=" ml-3 content">
         <p>
           <% if t.condition == 3 %>
             <i class="fa fa-sun-o" aria-hidden="true"></i>
@@ -135,11 +135,11 @@
     <% end %>
   </div>
 
-  <div class="form-group p-1 border">
+  <div class="form-group task">
     <p><%= Date.today-5 if @daily_tasks_5 %></p>
 
     <% @daily_tasks_5.each do |t| %>
-      <div class="border-top ml-3">
+      <div class=" ml-3 content">
         <p>
           <% if t.condition == 3 %>
             <i class="fa fa-sun-o" aria-hidden="true"></i>
@@ -162,11 +162,11 @@
     <% end %>
   </div>
 
-  <div class="form-group p-1 border">
+  <div class="form-group task">
     <p><%= Date.today-6 if @daily_tasks_6 %></p>
 
     <% @daily_tasks_6.each do |t| %>
-      <div class="border-top ml-3">
+      <div class=" ml-3 content">
         <p>
           <% if t.condition == 3 %>
             <i class="fa fa-sun-o" aria-hidden="true"></i>

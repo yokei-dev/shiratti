@@ -20,15 +20,15 @@
     <% end %>
     <% index = -1 %>
     <% @tasks_and_daily_tasks.collection.each do |daily_task, task|%>
-      <div class='border-bottom p-1 mb-2'>
-        <% unless daily_task.condition %>
+      <% unless daily_task.condition %>
+        <div class='task'>
           <span><%= daily_task.task.content %></span>
           <% index += 1%>
           <%= fields_for 'tasks[]', task do |field| %>
       
             <div class="field">
               <%= field.hidden_field :task_id, :value => task.id %>
-              <%= field.label :status, "doing" %>
+              <%= field.label :status, "Done" %>
               <%= field.check_box(:status, {}, checked_value = 1, unchecked_value = 0 ) %>
             </div>
             </br>
@@ -51,8 +51,8 @@
             <% end %>  
           </div>
           </br>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     <% end %>
     <div class="actions">
       <%= form.submit %>

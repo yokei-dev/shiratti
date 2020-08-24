@@ -77,3 +77,12 @@ body {
   background: -webkit-linear-gradient(top, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
   background: linear-gradient(to bottom, #007AB7, #8EC7E4 30%, #D7EBF6 60%, #FFF);
 }
+
+body {
+  font-family: "Poppins", "Noto Sans JP", sans-serif;
+  font-weight: bold;
+}
+
+body h2 {
+  font-weight: inherit;
+}

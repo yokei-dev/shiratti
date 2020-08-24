@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="row mt-3">
+    <h2 class=""> <%= 'タスクを作成しよう' %> </h2>
+  </div>
   <div class="form-wrap">
     <%= form_with model: @task do |f| %>
       <% if @task.errors.any? %>
@@ -10,20 +13,22 @@
           </ul>
         </div>
       <% end %>
-      <div class="form-group row mt-3">
-        <%= f.label :content , 'タスク', class: 'form-controll col-md-3' %>
-        <%= f.text_field :content, class: 'form-controll col-md-3' %>
-      </div>
-      <div class="form-group row">
-        <%= f.label :deadline , '〆切', class: 'form-controll col-md-3'%>
-        <%= f.date_field :deadline, class: 'form-controll col-md-3' %>
-      </div>
-      <div class="form-group row">
-        <%= f.label :project_id , 'プロジェクト', class: 'form-controll col-md-3' %>
-        <%= f.collection_select :project_id, Project.all, :id, :name, include_blank: '選択して下さい', class: 'form-controll col-md-3' %>
-      </div>
-      <div class="form-group row">
-        <%= f.submit "投稿", class: "btn btn-primary form-controll col-md-2" %>
+      <div class='task'>
+        <div class="form-group row mt-3">
+          <%= f.label :content , 'タスク', class: 'form-controll col-md-3 ml-2' %>
+          <%= f.text_field :content, class: 'form-controll col-md-3 ml-2' %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :deadline , '〆切', class: 'form-controll col-md-3 ml-2'%>
+          <%= f.date_field :deadline, class: 'form-controll col-md-3 ml-2' %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :project_id , 'プロジェクト', class: 'form-controll col-md-3 ml-2' %>
+          <%= f.collection_select :project_id, Project.all, :id, :name, include_blank: '選択して下さい', class: 'form-controll col-md-3 ml-2' %>
+        </div>
+        <div class="form-group row">
+          <%= f.submit "投稿", class: "btn btn-primary form-controll col-md-2 ml-2" %>
+        </div>
       </div>
     <% end %>
   </div>
