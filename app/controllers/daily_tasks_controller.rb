@@ -16,6 +16,6 @@ class DailyTasksController < ApplicationController
   private 
   
   def daily_task_params
-    params.require(:daily_task).permit(:task_id).merge(add_date: Date.today.to_s)
+    params.require(:daily_task).permit(:task_id).merge(add_date: Date.today)
   end
 end

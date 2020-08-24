@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_many :daily_tasks
   has_many :tasks
+  has_many :daily_users
 
 def join(project)
   self.user_projects.find_or_create_by(project_id: project.id)
