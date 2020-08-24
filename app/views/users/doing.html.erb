@@ -22,7 +22,9 @@
     <% @tasks_and_daily_tasks.collection.each do |daily_task, task|%>
       <% unless daily_task.condition %>
         <div class='task'>
-          <span><%= daily_task.task.project.name %>：<%= daily_task.task.content %></span>
+          <% if daily_task.task.project.present? %>
+            <span><%= daily_task.task.project.name %>：<%= daily_task.task.content %></span>
+          <% end %>
           <% index += 1%>
           <%= fields_for 'tasks[]', task do |field| %>
       
@@ -53,6 +55,7 @@
         </div>
       <% end %>
     <% end %>
+    <% if form.present? %>
     <div class="actions">
       <%= form.submit %>
     </div>

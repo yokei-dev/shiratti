@@ -1,4 +1,6 @@
-window.change =function change(){
+window.onload = function() {
+  // console.log("a")
+  window.change =function change(){
   radio = document.getElementsByClassName('doing')
   length = document.getElementsByClassName('doing').length
   for (let i = 0; i<length/3; i++) 
@@ -11,3 +13,4 @@ window.change =function change(){
     document.getElementById(`face_${i}`).style.display = "";
   }
 }
+};
