@@ -12,6 +12,7 @@ class TasksController < ApplicationController
     # binding.pry #TaskCollectionの更新は本来はupdateで行うべきな気がする
     if params[:task] && params[:task][:content]
       @task = Task.new(task_params)
+      # binding.pry
       if @task.save
         flash[:success] = 'タスクを投稿しました。'
         if @task.project_id == nil
