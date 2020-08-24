@@ -36,6 +36,8 @@ class UsersController < ApplicationController
     @daily_tasks_4 = @user.daily_tasks.where(add_date: Date.today-4)
     @daily_tasks_5 = @user.daily_tasks.where(add_date: Date.today-5)
     @daily_tasks_6 = @user.daily_tasks.where(add_date: Date.today-6)
+
+    
   end
 
 end
