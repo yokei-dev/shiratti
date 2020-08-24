@@ -13,7 +13,7 @@
         <li>タスク内容：<%= task.content %></li>
         <ul>
           <li>締め切り日：<%= task.deadline %></li>
-          <li>完了日：<%= task.updated_at %></li>
+          <li>完了日：<%= task.updated_at.strftime('%Y-%m-%d') %></li>
         </ul>
       </ul>
     </div>
