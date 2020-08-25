@@ -51,6 +51,9 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
+  encoding: utf8mb4
+  pool: 5
   database: myapp_production
   username: myapp
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
