@@ -50,11 +50,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 
-# production:
-#   <<: *default
-#   adapter: postgresql
-#   encoding: unicode
-#   pool: 5
+
 production:
   adapter: postgresql
   encoding: unicode
@@ -62,18 +58,4 @@ production:
   database: myapp_production
   username: myapp
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  # url: <%= ENV['postgres://qpgeviqalzqxgw:e37813f3f8733456bdd8766c435b3064901bbca0cfc255d5eeb4fd2896904a87@ec2-52-207-124-89.compute-1.amazonaws.com:5432/df2bitcct7vt4t'] %>
-  # adapter: postgresql
-  # encoding: utf8
-  # charset: utf8 #絵文字用追記
-  # collation: utf8_unicode_ci #絵文字用追記
-  # pool: 5
-  # database: myapp_production
-  # username: myapp
-  # password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
-
-# production:
-#   <<: *default
-#   database: myapp_production
-#   username: myapp
-#   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+ 
