@@ -10,9 +10,9 @@ namespace :slack_notification do
     
     if false
 
-    text = case Time.now.hour
-    when Time.now.hour then '10時: 今日も頑張りましょう'
-    end
+      text = case Time.now.hour
+      when Time.now.hour then '10時: 今日も頑張りましょう'
+      end
     mention = false
     @projects = Project.all.each do |project|
       a = Array.new(2)
@@ -43,8 +43,10 @@ namespace :slack_notification do
        #_____
      end
     end
+    Rails.logger.info('実行する')
     Slack.chat_postMessage(text: 'おい',channel: 'higedameshi')
-    
+    Rails.logger.info('実行する')
+
         
   end
 end
