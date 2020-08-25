@@ -25,7 +25,7 @@ class TasksController < ApplicationController
         render :new
       end
     else
-      @tasks = TaskCollection.new(current_user, tasks_collection_params,daily_tasks_collection_params)
+      @tasks = TaskCollection.new(User.find_by(params[:id]), tasks_collection_params,daily_tasks_collection_params)
       # binding.pry
       if @tasks.save
         if current_user.daily_users.find_by(add_date: Date.today)

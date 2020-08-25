@@ -10,7 +10,7 @@
 
   <%= form_with model: @tasks_and_daily_tasks, url: tasks_path, local: true do |form| %>
     <% if @tasks_and_daily_tasks.errors.any? %>
-      <div id="error_explanation">
+      <div id="error_explanation alert alert-warning">
         <ul>
           <% @tasks_and_daily_tasks.errors.full_messages.each do |tdt| %>
             <li><%= tdt %></li>
@@ -22,7 +22,9 @@
     <% @tasks_and_daily_tasks.collection.each do |daily_task, task|%>
       <% unless daily_task.condition %>
         <div class='task'>
-          <span><%= daily_task.task.project.name %>：<%= daily_task.task.content %></span>
+          <% if daily_task.task.project.present? %>
+            <span><%= daily_task.task.project.name %>：<%= daily_task.task.content %></span>
+          <% end %>
           <% index += 1%>
           <%= fields_for 'tasks[]', task do |field| %>
       
