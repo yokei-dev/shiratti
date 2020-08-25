@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
   validates :boss_id ,presence: true
+  validates :channel, presence: true
 
 
   belongs_to :boss, class_name: 'User', optional: true

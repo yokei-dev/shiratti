@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def doing
     @tasks_and_daily_tasks = TaskCollection.new(User.find_by(params[:id]),[],[])
+    binding.pry
 
     # @daily_tasks = current_user.daily_tasks.where(add_date: Date.today)
 

@@ -20,6 +20,7 @@
     <% end %>
     <% index = -1 %>
     <% @tasks_and_daily_tasks.collection.each do |daily_task, task|%>
+    <% binding.pry %>
       <% unless daily_task.condition %>
         <div class='task'>
           <% if daily_task.task.project.present? %>

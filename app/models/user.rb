@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   
   validates :name, presence: true, length: { maximum: 50 }
+  validates :slackid, presence: true
   
   has_many :user_projects
   has_many :joinings, through: :user_projects, source: :project
