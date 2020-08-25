@@ -13,18 +13,23 @@
             </ul>
           </div>
         <% end %>
-        <div class="form-group row mt-3 ml-2">
-          <%= f.label :deadline , '〆切（任意）'%>
-          <%= f.date_field :deadline %>
-        </div>
-        <div class="form-group row ml-2">
-          <%= f.label :project_id , 'プロジェクト'%>
-          <%= f.collection_select :project_id, Project.all, :id, :name, include_blank: '選択して下さい' %>
-        </div>
-          <%= f.hidden_field :status, :value => @task.status %>
-        <div class="actions">
-          <%= f.submit "登録", class: "btn btn-primary" %>
+        <div class='task'>
+          <div class='form-group row mt-3 ml-2'>
+            <%= f.label :content , 'タスク（必須）'%>
+            <%= f.text_field :content %>
+          </div>
+          <div class="form-group row ml-2">
+            <%= f.label :deadline , '〆切（任意）'%>
+            <%= f.date_field :deadline %>
+          </div>
+          <div class="form-group row ml-2">
+            <%= f.label :project_id , 'プロジェクト'%>
+            <%= f.collection_select :project_id, Project.all, :id, :name, include_blank: '選択して下さい' %>
+          </div>
+            <%= f.hidden_field :status, :value => @task.status %>
+          <div class="actions">
+            <%= f.submit "登録", class: "btn btn-primary" %>
+          </div>
         </div>
       <% end %>
-
 </div>
