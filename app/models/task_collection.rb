@@ -29,6 +29,7 @@ class TaskCollection
         # end
         end
       else
+        # binding.pry
         @daily_tasks = current_user.daily_tasks.where(add_date: Date.today)
         @tasks = @daily_tasks.map do |daily_task|
           daily_task = daily_task.task

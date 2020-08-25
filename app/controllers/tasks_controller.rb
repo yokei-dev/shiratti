@@ -25,7 +25,7 @@ class TasksController < ApplicationController
         render :new
       end
     else
-      @tasks = TaskCollection.new(User.find_by(params[:id]), tasks_collection_params,daily_tasks_collection_params)
+      @tasks = TaskCollection.new(User.find(params[:id]), tasks_collection_params,daily_tasks_collection_params)
       # binding.pry
       if @tasks.save
         if current_user.daily_users.find_by(add_date: Date.today)
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
         sum = 0.0
         i = 0
         # binding.pry
-        DailyTask.all.where(add_date: Date.today).each do |daily_task|
+        DailyTask.all.where(add_date: Date.today, user_id: cuurent_user.id).each do |daily_task|
           sum += daily_task.condition.to_i
           i += 1
         end

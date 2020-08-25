@@ -31,6 +31,7 @@ namespace :slack_notification do
         end
        text = a
        URL = project.channel
+       binding.pry
       # URL = "https://hooks.slack.com/services/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"
        notifier = Slack::Notifier.new(URL)
 
@@ -49,7 +50,7 @@ namespace :slack_notification do
         notifier.ping "<@#{user_id}>"
        end
        #_____
-       binding.pry
+      #  binding.pry
      end
 
         
