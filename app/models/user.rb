@@ -12,9 +12,9 @@ class User < ApplicationRecord
   has_many :user_projects
   has_many :joinings, through: :user_projects, source: :project
   
-  has_many :daily_tasks
+  has_many :daily_tasks, dependent: :destroy
   has_many :tasks, dependent: :destroy
-  has_many :daily_users
+  has_many :daily_users, dependent: :destroy
   
 def password_complexity
   # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
