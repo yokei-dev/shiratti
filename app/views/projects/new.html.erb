@@ -23,7 +23,7 @@
           <%= f.collection_select :boss_id, User.all, :id, :name, include_blank: '選択して下さい', class: 'form-control ml-2' %>
         </div>
         <div class=' form-group row mt-3'>
-          <%= f.label :channel, 'SlackのチャンネルやDMのURL（任意）', class: 'ml-2' %>
+          <%= f.label :channel, 'SlackのチャンネルやDMのURL（必須）', class: 'ml-2' %>
           <%= f.text_field :channel, :placeholder => "https://xxxx.slack.com/archives/xxxxxx", class: 'form-control ml-2' %>
         </div>
         <div class=' form-group row'>

@@ -20,6 +20,7 @@
     <% end %>
     <% index = -1 %>
     <% @tasks_and_daily_tasks.collection.each do |daily_task, task|%>
+    <% binding.pry %>
       <% unless daily_task.condition %>
         <div class='task'>
           <% if daily_task.task.project.present? %>
@@ -41,9 +42,9 @@
           <div class="field">
             <%= field.hidden_field :daily_task_id, :value => daily_task.id %>
               <i class="fa fa-sun-o form-label" aria-hidden="true"></i>
-              <%= field.radio_button :condition, 3, class: 'doing', onclick: 'change();', checked: 'checked' %>
+              <%= field.radio_button :condition, 3, class: 'doing', onclick: 'change();' %>
               <i class="fa fa-cloud form-label" aria-hidden="true"></i>
-              <%= field.radio_button :condition, 2, class: 'doing', onclick: 'change();' %>
+              <%= field.radio_button :condition, 2, class: 'doing', onclick: 'change();', checked: 'checked' %>
               <i class="fa fa-umbrella form-label" aria-hidden="true"></i>
               <%= field.radio_button :condition, 1, class: 'doing', onclick: 'change();' %>
               <div id="face_<%=index%>"> 
