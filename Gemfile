@@ -53,6 +53,7 @@ end
 
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
+  gem 'fog', '1.42'
 end
 
 
