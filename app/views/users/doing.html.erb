@@ -20,7 +20,7 @@
     <% end %>
     <% index = -1 %>
     <% @tasks_and_daily_tasks.collection.each do |daily_task, task|%>
-      <% unless daily_task.condition %>
+      <% unless daily_task.condition%>
         <div class='task'>
           <% if daily_task.task.project.present? %>
             <span><%= daily_task.task.project.name %>：<%= daily_task.task.content %></span>
