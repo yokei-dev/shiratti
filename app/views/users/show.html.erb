@@ -18,7 +18,9 @@
           <% if t.condition == nil %>
             <i class="fa fa-question" aria-hidden="true"></i>
           <% end %>
-          <%= t.task.project.name if t.task.project %>
+          <% if t.task.project.present?%>
+            <%= t.task.project.name %>
+          <% end %>
           ：<%= t.task.content %>
           <div>
             <%= t.comment%>

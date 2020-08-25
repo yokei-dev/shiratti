@@ -77,3 +77,4 @@ gem 'font-awesome-rails'
 
 gem 'whenever', :require => false
 
+gem 'dotenv-rails'
