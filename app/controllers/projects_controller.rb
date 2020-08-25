@@ -10,8 +10,9 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @user = User.find_by(id: params[:project][:boss_id])
     #binding.pry
-    if @project.save 
+    if @project.save && @user.join(@project)
       flash[:success] = 'プロジェクトを登録しました'
       redirect_to projects_url
     else
