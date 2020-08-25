@@ -55,7 +55,7 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  url: <%= ENV['postgres://qpgeviqalzqxgw:e37813f3f8733456bdd8766c435b3064901bbca0cfc255d5eeb4fd2896904a87@ec2-52-207-124-89.compute-1.amazonaws.com:5432/df2bitcct7vt4t'] %>
+  # url: <%= ENV['postgres://qpgeviqalzqxgw:e37813f3f8733456bdd8766c435b3064901bbca0cfc255d5eeb4fd2896904a87@ec2-52-207-124-89.compute-1.amazonaws.com:5432/df2bitcct7vt4t'] %>
   # adapter: postgresql
   # encoding: utf8
   # charset: utf8 #絵文字用追記
