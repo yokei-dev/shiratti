@@ -19,8 +19,10 @@
       </div>
     <% end %>
     <% index = -1 %>
+    <% a = false %>
     <% @tasks_and_daily_tasks.collection.each do |daily_task, task|%>
       <% unless daily_task.condition%>
+      <% a = true %>
         <div class='task'>
           <% if daily_task.task.project.present? %>
             <span><%= daily_task.task.project.name %>：<%= daily_task.task.content %></span>
@@ -56,9 +58,11 @@
         </div>
       <% end %>
     <% end %>
-    <div class="actions">
-      <%= form.submit %>
-    </div>
+    <% if a %>        
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
