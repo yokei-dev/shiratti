@@ -36,7 +36,7 @@
         <ul class="navbar-nav">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <a class="nav-link fa fa-user-o" aria-hidden="true" href="/users/<%=current_user.id%>" data-turbolinks="false">マイページ</a>
+              <a class="nav-link fa fa-user-o" aria-hidden="true" href="/users/<%=current_user.id%>" data-turbolinks="false"><%= current_user.name %></a>
             </li>
             <li class="nav-item">
               <a class="nav-link fa fa-id-card-o" aria-hidden="true" href="/users/edit" data-turbolinks="false">アカウント編集</a>

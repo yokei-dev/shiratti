@@ -44,7 +44,7 @@ namespace :slack_notification do
 
        #_____追加
        if mention
-         user_id = User.find_by(id: project.boss_id).name
+         user_id = User.find_by(id: project.boss_id).slackid
          notifier = Slack::Notifier.new(URL)
         notifier.ping "<@#{user_id}>"
        end
