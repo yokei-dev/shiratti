@@ -98,6 +98,10 @@ GEM
     devise-i18n-views (0.3.7)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     dry-inflector (0.2.0)
     erubi (1.9.0)
     eventmachine (1.2.7)
@@ -464,6 +468,7 @@ DEPENDENCIES
   devise
   devise-i18n
   devise-i18n-views
+  dotenv-rails
   fog (= 1.42)
   font-awesome-rails
   gemoji
