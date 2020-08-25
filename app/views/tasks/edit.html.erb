@@ -13,21 +13,13 @@
             </ul>
           </div>
         <% end %>
-<<<<<<< HEAD
+        <div class='task'>
         <div class='form-group row mt-3 ml-2'>
-          <%= f.label :content , 'タスク'%>
+          <%= f.label :content , 'タスク（必須）'%>
           <%= f.text_field :content, class: 'form-control' %>
         </div>
         <div class="form-group row ml-2">
-          <%= f.label :deadline , '〆切'%>
-=======
-        <div class="form-group">
-          <%= f.label :content , 'タスク（必須）'%>
-          <%= f.text_field :content %>
-        </div>
-        <div class="form-group">
           <%= f.label :deadline , '〆切（任意）'%>
->>>>>>> edd7f6eddda80eddb97838ea05fdf4cfe81537f3
           <%= f.date_field :deadline %>
         </div>
         <div class="form-group row ml-2">
@@ -38,6 +30,6 @@
         <div class="actions">
           <%= f.submit "登録", class: "btn btn-primary" %>
         </div>
+        </div>
       <% end %>
-
 </div>
