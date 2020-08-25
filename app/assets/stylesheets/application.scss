@@ -101,18 +101,14 @@ body h2 {
 .channel-menu_date {
   font-weight: bold;
 }
-.channel-menu h3 {
-  float: right;
-  padding-right: 0.1rem;
-  font-weight: 500;
-}
+
 .listings {
   min-height: 100vh;
   height: 100%;
   width: 220px;
   float: left;
   color: #ab9ba9;
-  background-color: #14274430;
+  background-color: #FFFFFF30;
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 10;
@@ -148,4 +144,6 @@ body h2 {
   text-align: left;
   color: #ab9ba9;
 }
+
+
 
