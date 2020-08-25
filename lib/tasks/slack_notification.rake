@@ -3,16 +3,11 @@ require "logger"
 
 namespace :slack_notification do
   task :post => :environment do
-    Rails.logger.info('実行する')
-    Slack.configure do |config|
-      config.token = ENV['SLACK_TOKEN']
-    end
-    
-    # if false
-
-      # text = case Time.now.hour
-      # when Time.now.hour then '10時: 今日も頑張りましょう'
-      # end
+    # Rails.logger.info('実行する') #slack_api用
+    # Slack.configure do |config|
+    #   config.token = ENV['SLACK_TOKEN']
+    # end
+ 
       mention = false
       @projects = Project.all.each do |project|
         a = Array.new(2)
@@ -26,27 +21,36 @@ namespace :slack_notification do
             end
            #____
            #____顔が2点以下3回あったらmentionいく
+          if member.daily_users.last(3).length >= 3
             if member.daily_users.last(3)[0].face == "😑" and member.daily_users.last(3)[0].face == "😑" and member.daily_users.last(3)[0].face == "😑"  
               mention = true
             end
+          end
            #____
           end
         end
        text = a
-       # binding.pry
-       Slack.chat_postMessage(text: text.to_json, channel: 'higedameshi')
+      #  URL = project.channel
+      URL = "https://hooks.slack.com/services/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"
+       notifier = Slack::Notifier.new(URL)
+
+      attachments = {
+        author_name: "halleruya",
+        text: text.to_json,
+        color: "good",
+        footer: "今日は晴れましたか"
+      }
+      notifier.post attachments: [attachments]
+
        #_____追加
        if mention
-         user_id = "U013RQ74ZLZ"
-         Slack.chat_postMessage(text: "<@#{user_id}>", channel: 'higedameshi')
+         user_id = User.find_by(id: project.boss_id).name
+         notifier = Slack::Notifier.new(URL)
+        notifier.ping "<@#{user_id}>"
        end
        #_____
+       binding.pry
      end
-    # end
-    # Rails.logger.info('前')
-    # Rails.logger.info(ENV['SLACK_TOKEN'])
-    # Slack.chat_postMessage(text: 'おい',channel: 'higedameshi')
-    # Rails.logger.info('後')
 
         
   end
