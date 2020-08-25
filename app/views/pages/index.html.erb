@@ -70,16 +70,18 @@
 		</div>
 
 	<% else %>
-		<div class='first-word'>
-			<h1>Halleruya</h1>
-			<h3>プロジェクト毎にタスクを作成し、天気マークで振り返ることができます。</h3>
-		</div>
-		<div>
-			<%= link_to "メールアドレスで新規登録する", new_user_registration_path %>
-		</div>
-		<div>または</div>
-		<div>
-			<%= link_to "すでにアカウントをお持ちの方", new_user_session_path %>
+		<div class='waku'>
+			<div class='first-word'>
+				<h1>Halleruya</h1>
+				<h3>プロジェクト毎にタスクを作成し、天気マークで振り返ることができます。</h3>
+			</div>
+			<div>
+				<%= link_to "メールアドレスで新規登録する", new_user_registration_path %>
+			</div>
+			<div>または</div>
+			<div>
+				<%= link_to "すでにアカウントをお持ちの方", new_user_session_path %>
+			</div>
 		</div>
 	<% end %>
 </div>
