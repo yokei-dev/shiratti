@@ -49,7 +49,7 @@ namespace :slack_notification do
         notifier.ping "<@#{user_id}>"
        end
        #_____
-       binding.pry
+      #  binding.pry
      end
 
         
