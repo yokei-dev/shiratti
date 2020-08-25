@@ -9,7 +9,6 @@ class PagesController < ApplicationController
     #   color: 'good'
     # }
     # notifier.post text: "俺が記事を更新しました！", attachments: attachments
-
   end
 
 end

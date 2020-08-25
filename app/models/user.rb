@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :joinings, through: :user_projects, source: :project
   
   has_many :daily_tasks
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
   has_many :daily_users
   
 def password_complexity
