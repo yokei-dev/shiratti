@@ -27,11 +27,11 @@ namespace :slack_notification do
            #____
            #____顔が2点以下3回あったらmentionいく
             if member.daily_users.last(3)[0].face == "😑" and member.daily_users.last(3)[0].face == "😑" and member.daily_users.last(3)[0].face == "😑"  
-
+              mention = true
             end
            #____
-         end
-       end
+          end
+        end
        text = a
        # binding.pry
        Slack.chat_postMessage(text: text.to_json, channel: 'higedameshi')

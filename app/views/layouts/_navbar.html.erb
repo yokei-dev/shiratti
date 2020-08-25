@@ -15,7 +15,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="/users/<%=current_user.id%>/joinings" data-turbolinks="false">マイプロジェクト</a>
-                <a class="dropdown-item" href="/users/<%=current_user.id%>/projects" data-turbolinks="false">プロジェクト一覧</a>
+                <a class="dropdown-item" href="/users/<%=current_user.id%>/projects" data-turbolinks="false">全てのプロジェクト</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/users/<%=current_user.id%>/projects/new" data-turbolinks="false">プロジェクト作成</a>
               </div>
@@ -30,14 +30,6 @@
                 <a class="dropdown-item" href="/users/<%=current_user.id%>/tasks/new" data-turbolinks="false">タスク作成</a>
               </div>
             </li>
-            
-          <% else %>
-            <li class="nav-item">
-              <a class="nav-link fa fa-sign-in" aria-hidden="true" href="/users/sign_in">サインイン</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fa fa-user-plus" aria-hidden="true" href="/users/sign_up">サインアップ</a>
-            </li>
           <% end %>
         </ul>
 
@@ -45,6 +37,9 @@
           <% if user_signed_in? %>
             <li class="nav-item">
               <a class="nav-link fa fa-user-o" aria-hidden="true" href="/users/<%=current_user.id%>" data-turbolinks="false">マイページ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fa fa-id-card-o" aria-hidden="true" href="/users/edit" data-turbolinks="false">アカウント編集</a>
             </li>
             <li class="nav-item">
               <a class="nav-link fa fa-sign-out" aria-hidden="true" href="/users/sign_out">サインアウト</a>
