@@ -18,7 +18,7 @@
           <ul>
             <li>〆切：<%= task.deadline %></li>
           <% if task.daily_tasks.present? && task.daily_tasks.last.add_date == Date.today %>
-            <div class="btn">Doing</div>
+            <a >Doing</a>
           <% else %>
             <%= form_with(model: task.daily_tasks.build, local: true)do |f| %>
               <%= f.hidden_field :task_id, :value => task.id %>

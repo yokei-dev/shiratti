@@ -1,8 +1,8 @@
-<div class="main">
-  <div class="">
-    <div class="form-wrap">
-      <div class="form-group text-center">
-      </div>
+<div class="container">
+  <div class="row mt-3">
+    <h2 class=""> タスクを編集する </h2>
+  </div>
+
       <%= form_with(model: @task, local: true) do |f| %>
         <% if @task.errors.any? %>
           <div id="error_explanation alert alert-warning">
@@ -13,22 +13,31 @@
             </ul>
           </div>
         <% end %>
+<<<<<<< HEAD
+        <div class='form-group row mt-3 ml-2'>
+          <%= f.label :content , 'タスク'%>
+          <%= f.text_field :content, class: 'form-control' %>
+        </div>
+        <div class="form-group row ml-2">
+          <%= f.label :deadline , '〆切'%>
+=======
         <div class="form-group">
           <%= f.label :content , 'タスク（必須）'%>
           <%= f.text_field :content %>
         </div>
         <div class="form-group">
           <%= f.label :deadline , '〆切（任意）'%>
+>>>>>>> edd7f6eddda80eddb97838ea05fdf4cfe81537f3
           <%= f.date_field :deadline %>
         </div>
-        <div class="form-group">
+        <div class="form-group row ml-2">
           <%= f.label :project_id , 'プロジェクト'%>
           <%= f.collection_select :project_id, Project.all, :id, :name, include_blank: '選択して下さい' %>
         </div>
+          <%= f.hidden_field :status, :value => @task.status %>
         <div class="actions">
-          <%= f.submit "編集", class: "btn btn-primary" %>
+          <%= f.submit "登録", class: "btn btn-primary" %>
         </div>
       <% end %>
-    </div>
-  </div>
+
 </div>
