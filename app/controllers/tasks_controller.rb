@@ -36,7 +36,7 @@ class TasksController < ApplicationController
         sum = 0.0
         i = 0
         # binding.pry
-        DailyTask.all.where(add_date: Date.today, user_id: cuurent_user.id).each do |daily_task|
+        DailyTask.all.where(add_date: Date.today, user_id: current_user.id).each do |daily_task|
           sum += daily_task.condition.to_i
           i += 1
         end
