@@ -15,15 +15,15 @@
       <% end %>
       <div class='project'>
         <div class=' form-group row mt-3'>
-          <%= f.label :name, 'プロジェクト名', class: 'ml-2' %>
-          <%= f.text_field :name, class: 'form-control ml-2' %>
+          <%= f.label :name, 'プロジェクト名（必須）', class: 'ml-2' %>
+          <%= f.text_field :name, class: 'form-control ml-2', placeholder:'プロジェクト名' %>
         </div>
         <div class=' form-group row'>
-          <%= f.label :boss_id, 'プロジェクトマネージャー', class: 'ml-2' %>
+          <%= f.label :boss_id, 'プロジェクトマネージャー（必須）', class: 'ml-2' %>
           <%= f.collection_select :boss_id, User.all, :id, :name, include_blank: '選択して下さい', class: 'form-control ml-2' %>
         </div>
         <div class=' form-group row mt-3'>
-          <%= f.label :channel, 'チャンネル名(例：#all)', class: 'ml-2' %>
+          <%= f.label :channel, 'チャンネル名(例：#all)（任意）', class: 'ml-2' %>
           <%= f.text_field :channel, :placeholder => "all", class: 'form-control ml-2' %>
         </div>
         <div class=' form-group row'>
