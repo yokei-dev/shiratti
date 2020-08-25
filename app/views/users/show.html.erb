@@ -1,5 +1,5 @@
 <div class='container'>
-  <h2 class='mt-3'>タスクの振り返り</h2>
+  <h2 class='mt-3'><%=@user.name%>の振り返り</h2>
 
   <div class="form-group task">
     <p><%= Date.today  %><%= DailyUser.find_by(user_id: @user.id, add_date: Date.today).face if DailyUser.find_by(user_id: current_user.id, add_date: Date.today).present? %></p>
