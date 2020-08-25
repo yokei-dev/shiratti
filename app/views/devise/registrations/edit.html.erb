@@ -20,11 +20,7 @@
 
       <div class="field form-group">
         <%= f.label :新しいパスワード, class: 'form-label' %>
-        <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "form-control" %>
-        <% if @minimum_password_length %>
-
-          <em><%= @minimum_password_length %>文字以上</em>
-        <% end %>
+        <%= f.password_field :password, autocomplete: "off", placeholder: "大文字、小文字、数字、記号を含む8文字以上", class: "form-control" %>
       </div>
 
       <div class="field form-group">

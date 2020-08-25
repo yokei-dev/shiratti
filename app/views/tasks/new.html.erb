@@ -3,7 +3,7 @@
     <h2 class=""> <%= 'タスクを作成しよう' %> </h2>
   </div>
   <div class="form-wrap">
-    <%= form_with model: @task do |f| %>
+    <%= form_with(model: @task, local: true) do |f| %>
       <% if @task.errors.any? %>
         <div id="error_explanation alert alert-warning">
           <ul>
@@ -16,14 +16,14 @@
       <div class='task'>
         <div class="form-group row mt-3">
           <%= f.label :content , 'タスク', class: 'form-controll col-md-3 ml-2' %>
-          <%= f.text_field :content, class: 'form-controll col-md-3 ml-2' %>
+          <%= f.text_field :content, class: 'form-controll col-md-3 ml-2', placeholder:'必須：タスク名' %>
         </div>
         <div class="form-group row">
-          <%= f.label :deadline , '〆切', class: 'form-controll col-md-3 ml-2'%>
+          <%= f.label :deadline , '〆切（任意）', class: 'form-controll col-md-3 ml-2'%>
           <%= f.date_field :deadline, class: 'form-controll col-md-3 ml-2' %>
         </div>
         <div class="form-group row">
-          <%= f.label :project_id , 'プロジェクト', class: 'form-controll col-md-3 ml-2' %>
+          <%= f.label :project_id , 'プロジェクト（指定しない場合は個人タスクとして扱われます）', class: 'form-controll col-md-3 ml-2' %>
           <%= f.collection_select :project_id, Project.all, :id, :name, include_blank: '選択して下さい', class: 'form-controll col-md-3 ml-2' %>
         </div>
         <div class="form-group row">

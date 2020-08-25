@@ -12,9 +12,14 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @user = User.find_by(id: params[:project][:boss_id])
     #binding.pry
-    if @project.save && @user.join(@project)
-      flash[:success] = 'プロジェクトを登録しました'
-      redirect_to projects_url
+    if @project.save 
+      if @user.join(@project)
+        flash[:success] = 'プロジェクトを登録しました'
+        redirect_to projects_url
+      else
+        flash.now[:danger] = 'プロジェクトの登録に失敗しました'
+        render :new
+      end
     else
       flash.now[:danger] = 'プロジェクトの登録に失敗しました'
       render :new

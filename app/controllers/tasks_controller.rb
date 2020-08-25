@@ -69,7 +69,7 @@ class TasksController < ApplicationController
 		@task = Task.find(params[:id])
 		@task.destroy
 		flash[:success] = 'タスクを削除しました。'
-    redirect_to root_url
+    redirect_back(fallback_location: root_path)
 	end
 
 	def edit

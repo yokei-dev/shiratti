@@ -11,15 +11,25 @@
 					<div class="project">	
 						<li><%= task.content %></li>
 						<div class=''>担当者：<%= task.user.name %> ⇨ 〆切：<%= task.deadline %></div>
-						<div class="form-group">
-							<%= f.label :user_id , '担当者変更', class: 'col-form-label' %>
-							<%= f.hidden_field :status, :value => 0 %>
-							<%= f.hidden_field :project_id, :value => task.project_id %>
-							<%= f.collection_select :user_id, User.all, :id, :name, include_blank: '担当なし' %>
+						<div>
+							<div class="form-group" style="display:inline-flex">
+								<%= f.label :user_id , '担当者変更', class: 'col-form-label' %>
+								<%= f.hidden_field :status, :value => 0 %>
+								<%= f.hidden_field :project_id, :value => task.project_id %>
+								<%= f.collection_select :user_id, User.all, :id, :name, include_blank: '担当なし' %>
+							</div>
+							<div class="actions  mb-2" style="display:inline-flex">
+								<%= f.submit "変更", class: "btn" %>
+							</div>
 						</div>
-						<div class="actions  mb-2">
-							<%= f.submit "変更", class: "btn btn-primary" %>
-						</div>
+						<div>
+							<div style="display:inline-flex">
+								<%= link_to 'タスク編集', edit_task_path(task), class: 'btn', data: {"turbolinks"=>false}%>
+							</div>
+							<div class="actions fa fa-trash" aria-hidden="true" >
+					      <%= link_to 'タスク削除', task, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+					    </div>
+					  </div>
 					</div>
 		    <% end %>
 			<% end %>
@@ -33,14 +43,22 @@
 					<div class='project'>
 						<li><%= task.content %></li>
 						<div>〆切: <%= task.deadline %></div>
-						<div class="form-group">
-							<%= f.label :user_id , '担当者', class: 'col-form-label'%>
-							<%= f.hidden_field :status, :value => 0 %>
-							<%= f.collection_select :user_id, User.all, :id, :name, include_blank: '選択して下さい' %>
+						<div>
+							<div class="form-group" style="display:inline-flex">
+								<%= f.label :user_id , '担当者', class: 'col-form-label'%>
+								<%= f.hidden_field :status, :value => 0 %>
+								<%= f.collection_select :user_id, User.all, :id, :name, include_blank: '選択して下さい' %>
+							</div>
+							<div class="actions  mb-2" style="display:inline-flex">
+								<%= f.submit "担当登録", class: "btn" %>
+							</div>
 						</div>
-						<div class="actions  mb-2">
-							<%= f.submit "担当登録", class: "btn btn-primary" %>
+						<div style="display:inline-flex">
+						<%= link_to 'タスク編集', edit_task_path(task), class: 'btn', data: {"turbolinks"=>false}%>
 						</div>
+						<div class="actions fa fa-trash" aria-hidden="true">
+					     <%= link_to 'タスク削除', task, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+					   </div>
 					</div>
 				<% end %>
 			<% end %>
