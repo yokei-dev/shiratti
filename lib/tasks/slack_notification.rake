@@ -8,27 +8,27 @@ namespace :slack_notification do
       config.token = ENV['SLACK_TOKEN']
     end
     
-    if false
+    # if false
 
-      text = case Time.now.hour
-      when Time.now.hour then '10時: 今日も頑張りましょう'
-      end
-    mention = false
-    @projects = Project.all.each do |project|
-      a = Array.new(2)
-      project.members.each do |member|
-        a[0] = member.name
-        if member.daily_users.last.present?
-          a[1] = member.daily_users.last.face
+      # text = case Time.now.hour
+      # when Time.now.hour then '10時: 今日も頑張りましょう'
+      # end
+      mention = false
+      @projects = Project.all.each do |project|
+        a = Array.new(2)
+        project.members.each do |member|
+          a[0] = member.name
+          if member.daily_users.last.present?
+            a[1] = member.daily_users.last.face
           #____顔が1点ならmentionいく
-          if member.daily_users.last.face == "😱" or member.daily_users.last.face == "😢"
-            mention = true
-          end
+            if member.daily_users.last.face == "😱" or member.daily_users.last.face == "😢"
+              mention = true
+            end
            #____
            #____顔が2点以下3回あったらmentionいく
-           if member.daily_users.last(3)[0].face == "😑" and member.daily_users.last(3)[0].face == "😑" and member.daily_users.last(3)[0].face == "😑"  
+            if member.daily_users.last(3)[0].face == "😑" and member.daily_users.last(3)[0].face == "😑" and member.daily_users.last(3)[0].face == "😑"  
 
-           end
+            end
            #____
          end
        end
@@ -42,10 +42,11 @@ namespace :slack_notification do
        end
        #_____
      end
-    end
-    Rails.logger.info('実行する')
-    Slack.chat_postMessage(text: 'おい',channel: 'higedameshi')
-    Rails.logger.info('実行する')
+    # end
+    # Rails.logger.info('前')
+    # Rails.logger.info(ENV['SLACK_TOKEN'])
+    # Slack.chat_postMessage(text: 'おい',channel: 'higedameshi')
+    # Rails.logger.info('後')
 
         
   end
