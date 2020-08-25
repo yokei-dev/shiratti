@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @tasks = @project.tasks.where(status: 0)
+    @tasks = @project.tasks.where(status: 0).order(updated_at: 'DESC')
   end
 
   def users
